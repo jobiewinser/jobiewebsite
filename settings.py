@@ -29,15 +29,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env("SECRET_KEY")
 STATIC_URL = '/static/'
 # SECURITY WARNING: don't run with debug turned on in production!
+STATIC_ROOT = os.path.join(BASE_DIR, 'jobiewebsite/staticfiles/')
 if env("SERVER") == "development":
     DEBUG = True
-    STATIC_ROOT = os.path.join(BASE_DIR, 'jobiewebsite/static/')
 else:
     DEBUG = False
-    STATICFILES_DIRS = [
-        BASE_DIR / "static",
-        '/var/www/jobiewebsite/static/',
-    ]
+STATICFILES_DIRS = [
+    '/var/www/jobiewebsite/static/'
+]
     
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'jobiewinser.ddns.net']
