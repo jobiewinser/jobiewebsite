@@ -27,13 +27,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env("SECRET_KEY")
-
+STATIC_URL = '/static/'
 # SECURITY WARNING: don't run with debug turned on in production!
-print(env("SERVER"))
 if env("SERVER") == "development":
     DEBUG = True
+    STATIC_ROOT = os.path.join(BASE_DIR, 'jobiewebsite/static/')
 else:
     DEBUG = False
+    STATICFILES_DIRS = [
+        BASE_DIR / "static",
+        '/var/www/jobiewebsite/static/',
+    ]
     
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'jobiewinser.ddns.net']
@@ -103,7 +107,6 @@ DATABASES = {
         'PORT':'',
     }
 }
-print(DATABASES)
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -140,12 +143,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-    '/var/www/jobiewebsite/static/',
-]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
