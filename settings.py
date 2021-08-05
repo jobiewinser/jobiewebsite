@@ -39,7 +39,7 @@ STATICFILES_DIRS = [
 ]
     
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'jobiewinser.ddns.net']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'jobiewinser.ddns.net', 'www.django.com']
 
 
 # Application definition
@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'core'
 ]
 
 MIDDLEWARE = [

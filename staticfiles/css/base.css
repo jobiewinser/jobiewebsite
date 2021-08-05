@@ -1,5 +1,5 @@
 html {
-  font-family:Roboto-Thin;
+  font-family:Roboto-Regular;
 }
 
 body {
@@ -7,9 +7,15 @@ body {
 }
 
 @font-face {
-  font-family: 'Roboto-Thin';
-  src: local('Roboto-Thin'),
-          url('/static/fonts/Roboto-Thin.ttf') format("truetype");
+  font-family: 'Roboto-Regular';
+  src: local('Roboto-Regular'),
+          url('/static/fonts/Roboto-Regular.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: 'Roboto-Bold';
+  src: local('Roboto-Bold'),
+          url('/static/fonts/Roboto-Bold.ttf') format("truetype");
 }
 
 
