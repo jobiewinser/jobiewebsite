@@ -20,7 +20,7 @@ class Technology(models.Model):
     language = models.ManyToManyField(Language)
     image = models.FileField(null = True, upload_to='technology-images')
     priority = models.IntegerField(null = True, blank=True)
-    htmldescription = models.IntegerField(null = True, blank=True)
+    htmldescription = models.CharField(null = True, max_length = 500, blank=True)
 
     def __str__(self):
         return self.name
