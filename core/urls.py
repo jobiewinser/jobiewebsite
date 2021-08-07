@@ -16,6 +16,8 @@ Including another URLconf
 from django.urls import path
 import core.views as coreviews
 urlpatterns = [
-    path('', coreviews.Home.as_view(), name='home'),
+    path('', coreviews.HomeView.as_view(), name='home'),
+    path('project/<int:project_id>', coreviews.ProjectView.as_view(), name='project'),
+    path('project/image/<int:projectimage_id>', coreviews.Project_Image_Download.as_view(), name='project-mage-download'),
     
 ]

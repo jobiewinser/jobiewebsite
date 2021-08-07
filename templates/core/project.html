@@ -1,0 +1,114 @@
+{% extends 'core/base.html' %}
+
+{%block scripts%}
+    {{block.super}}
+    <script>
+        $(document).ready(function() {
+            {% comment %} $('#image-modal').on('shown.bs.modal', function () {
+                $('.card-img-top').trigger('focus')
+            }) {% endcomment %}
+        });
+
+    </script>
+{%endblock scripts%}
+
+{%block styles%}
+    {{block.super}}
+    <style>
+        .image-card {
+            margin:0px;
+            padding:0px;
+        }
+
+        .image-card-body {
+            margin:0px;
+            padding:0px;
+        }
+
+        .image-modal-dialog {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .image-modal-content {
+            height: auto;
+            min-height: 100%;
+            border-radius: 10px;
+            background: #d3d3d3;
+        }
+
+        .modal-backdrop {
+            background-color: rgba(0,0,0,1) !important;
+        }
+
+        .image-modal-dialog {
+            max-width: none;
+        }
+
+        #image-modal {
+            padding:20px 40px 20px 40px;
+            margin: auto;
+
+        }
+    </style>
+{%endblock styles%}
+
+{%block content%}
+    <div class="modal fade" id="image-modal">
+        <div class="modal-dialog image-modal-dialog">
+            <div class="modal-content image-modal-content">
+                <div class="modal-body"> 
+                    <div class="row">
+                        <div class="col-2" >
+                            <form style="text-align:center" id="download-link" action="#">
+                                <input class="btn btn-primary" type="submit" value="Download Image" />
+                            </form>
+                        </div>
+                        <div class="col-8">
+                            <div class="container">
+                                <img id="image-modal-image" class="card-img-top" src="">
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right:10px">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="alert alert-light m-3" style="color:black" role="alert">
+                            <span id="image-modal-description"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            Project - <span style="font-family:Roboto-Bold">{{project.name}}</span>
+        </div>
+        <div class="card-body">
+            {{project.htmldescription|safe}}
+        </div>
+    </div>
+    
+    <hr>
+
+    <div class="layout-margin-8 mt-5">
+        <div class="row">
+            {%for projectimage in project.projectimage_set.all%}
+                <div class="col-lg-4 pb-4" id="projectimage-{{projectimage.pk}}" data-searchable="true">
+                    <div class="card image-card filter-card h-100" style="">
+                        <div class="card-body image-card-body" style="">
+                            <img type="button" onclick="$('#image-modal-image').prop('src', '/media/{{projectimage.image}}'); $('#download-link').prop('action', '/project/image/{{projectimage.pk}}'); $('#image-modal-description').html('{{projectimage.htmldescription|safe}}');" data-toggle="modal" data-target="#image-modal" class="card-img-top" src="/media/{{projectimage.image}}">
+                        </div>
+                    </div>
+                </div>
+            {%endfor%}
+        </div>
+    </div>
+{%endblock content%}

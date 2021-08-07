@@ -135,3 +135,7 @@ static/css/base.css
 static/css/base.css
 
 migrations
+
+media/**
+static/**
+static/css/base.css
