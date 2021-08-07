@@ -19,7 +19,9 @@ urlpatterns = [
     path('', coreviews.HomeView.as_view(), name='home'),
     path('project/<int:project_id>', coreviews.ProjectView.as_view(), name='project'),
     path('projects/', coreviews.ProjectListView.as_view(), name='projects'),
-    path('project/image/<int:projectimage_id>', coreviews.Project_Image_Download.as_view(), name='project-mage-download'),
+    path('projects/language=<int:language_id>', coreviews.ProjectListView.as_view(), name='projects-language'),
+    path('projects/technology=<int:technology_id>', coreviews.ProjectListView.as_view(), name='projects-technology'),
+    path('project/image/<int:projectimage_id>', coreviews.Project_Image_Download.as_view(), name='project-image-download'),
     path('career/', coreviews.CareerView.as_view(), name='career'),
     path('site/', coreviews.SiteView.as_view(), name='site'),
 

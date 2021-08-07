@@ -36,7 +36,7 @@
                     <div class="card filter-card h-100">
                         <a href="#"><img class="card-img-top " src="media/{{technology.image}}"></a>
                         <div class="card-body">
-                            <h5 class="filter-card-title searchable-text"><a href="#">{{technology.name}}</a></h5>
+                            <h5 class="filter-card-title searchable-text"><a href="/projects/technology={{technology.pk}}">{{technology.name}}</a></h5>
                             <p class="card-text">
                                 {% if technology.project_set.all %}
                                     <span>Projects:</span><br>
@@ -52,7 +52,7 @@
                         </div>
                         <div class="card-footer text-muted text-truncate">
                             {% for language in technology.language.all %}
-                                <span class="badge badge-primary searchable-text">{{language.name}}</span>
+                                <a href="/projects/language={{language.pk}}"><span class="badge badge-primary searchable-text">{{language.name}}</span></a>
                             {% endfor %}
                             {% for type in technology.type.all %}
                                 <span class="badge badge-secondary searchable-text">{{type.name}}</span>

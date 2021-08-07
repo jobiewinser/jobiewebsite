@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView
-from core.models import Technology, TechnologyType, Project, ProjectImage
+from core.models import Technology, TechnologyType, Project, ProjectImage, Language
 from django.views import View
 from django.http import HttpResponse
 import os
@@ -20,6 +20,17 @@ class ProjectListView(TemplateView):
 
         context = super(TemplateView, self).get_context_data(**kwargs)
         context['projectlist'] = Project.objects.all() 
+        if 'technology_id' in kwargs:
+            filter_technology = Technology.objects.filter(pk=kwargs['technology_id']).first()
+            context['projectlist'] = context['projectlist'].filter(technology=filter_technology)
+            context['filter_type'] = 'Technology'
+            context['filter_parameter'] = filter_technology.name
+        if 'language_id' in kwargs:
+            filter_language = Language.objects.filter(pk=kwargs['language_id']).first()
+            context['projectlist'] = context['projectlist'].filter(technology__language=filter_language)
+            context['filter_type'] = 'Language'
+            context['filter_parameter'] = filter_language.name
+            
         return context
 
 class ProjectView(TemplateView):

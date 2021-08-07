@@ -30,40 +30,44 @@
             <table class="table">
                 <thead>
                     <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Technologies</th>
-                    <th scope="col">Languages</th>
-                    <th scope="col">Duration</th>
-                    <th scope="col">Brief</th>
+                    <th scope="col" class="one-line">Name</th>
+                    <th scope="col" class="one-line">Technologies{% if filter_type == 'Technology' %} - <a href="/projects/"><i style="font-size:12px">Clear Filter: {{filter_parameter}}</i></a>{% endif %}</th>
+                    <th scope="col" class="one-line">Languages{% if filter_type == 'Language' %} - <a href="/projects/"><i style="font-size:12px">Clear Filter: {{filter_parameter}}</i></a>{% endif %}</th>
+                    <th scope="col" class="one-line">Duration</th>
+                    <th scope="col" class="one-line">Brief</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {%for project in projectlist%}
-                        <tr>
-                            <td class="one-line">
-                                <a href="/project/{{project.pk}}">{{project.name}}</a>
-                                {% if request.user.is_superuser %}
-                                    <a href="/admin/core/project/{{project.pk}}/change/" target="_blank" style="color:green">Edit</a>
-                                {% endif %}
-                            </td>
-                            <td>
-                                {%for technology in project.technology.all %} 
-                                    {{technology.name}} 
-                                {%endfor%}
-                            </td>
-                            <td>
-                                {%for technology in project.technology.all %} 
-                                    {%for language in technology.language.all %} 
-                                        {{language.name}} 
+                    {%if projectlist %}
+                        {%for project in projectlist%}
+                            <tr>
+                                <td class="one-line">
+                                    <a href="/project/{{project.pk}}">{{project.name}}</a>
+                                    {% if request.user.is_superuser %}
+                                        <a href="/admin/core/project/{{project.pk}}/change/" target="_blank" style="color:green">Edit</a>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {%for technology in project.technology.all %} 
+                                        {{technology.name}} 
                                     {%endfor%}
-                                {%endfor%}
-                            </td>
-                            <td class="one-line">
-                                {{ project.start|timesince:project.end }} {%if not project.end%}<i>(Ongoing)</i>{%endif%}
-                            </td>
-                            <td>{{project.shortdescription}}</td>
-                        </tr>
-                    {%endfor%}
+                                </td>
+                                <td>
+                                    {%for technology in project.technology.all %} 
+                                        {%for language in technology.language.all %} 
+                                            {{language.name}} 
+                                        {%endfor%}
+                                    {%endfor%}
+                                </td>
+                                <td class="one-line">
+                                    {{ project.start|timesince:project.end }} {%if not project.end%}<i>(Ongoing)</i>{% endif %}
+                                </td>
+                                <td>{{project.shortdescription}}</td>
+                            </tr>
+                        {%endfor%}
+                    {%else%}
+                        <tr><td colspan="5" class="center">No Projects for <span style="font-family:Roboto-Bold">{{filter_type}} = {{filter_parameter}}</span></td></tr>
+                    {% endif %}
                 </tbody>
             </table>
         </div>
