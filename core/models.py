@@ -32,6 +32,7 @@ class Project(models.Model):
     end = models.DateField(null=True, blank=True)
     technology = models.ManyToManyField(Technology)
     htmldescription = models.CharField(null = True, max_length = 4000, blank=True)
+    shortdescription = models.CharField(null = True, max_length = 1000, blank=True)
 
     def __str__(self):
         return self.name

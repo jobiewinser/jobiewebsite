@@ -1,0 +1,71 @@
+{% extends 'core/base.html' %}
+
+{%block scripts%}
+    {{block.super}}
+    <script>
+        $(document).ready(function() {
+        });
+
+    </script>
+{%endblock scripts%}
+
+{%block styles%}
+    {{block.super}}
+    <style>
+        .one-line {
+            white-space: nowrap;
+            overflow: hidden;
+        }
+    </style>
+{%endblock styles%}
+
+{% block projects_nav_active %}active{%endblock projects_nav_active%}
+
+{%block content%}
+    <div class="card main-card">
+        <div class="card-header">
+            Projects
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Technologies</th>
+                    <th scope="col">Languages</th>
+                    <th scope="col">Duration</th>
+                    <th scope="col">Brief</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for project in projectlist%}
+                        <tr>
+                            <td class="one-line">
+                                <a href="/project/{{project.pk}}">{{project.name}}</a>
+                                {% if request.user.is_superuser %}
+                                    <a href="/admin/core/project/{{project.pk}}/change/" target="_blank" style="color:green">Edit</a>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {%for technology in project.technology.all %} 
+                                    {{technology.name}} 
+                                {%endfor%}
+                            </td>
+                            <td>
+                                {%for technology in project.technology.all %} 
+                                    {%for language in technology.language.all %} 
+                                        {{language.name}} 
+                                    {%endfor%}
+                                {%endfor%}
+                            </td>
+                            <td class="one-line">
+                                {{ project.start|timesince:project.end }} {%if not project.end%}<i>(Ongoing)</i>{%endif%}
+                            </td>
+                            <td>{{project.shortdescription}}</td>
+                        </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{%endblock content%}

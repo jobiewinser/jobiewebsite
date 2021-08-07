@@ -18,6 +18,9 @@ import core.views as coreviews
 urlpatterns = [
     path('', coreviews.HomeView.as_view(), name='home'),
     path('project/<int:project_id>', coreviews.ProjectView.as_view(), name='project'),
+    path('projects/', coreviews.ProjectListView.as_view(), name='projects'),
     path('project/image/<int:projectimage_id>', coreviews.Project_Image_Download.as_view(), name='project-mage-download'),
-    
+    path('career/', coreviews.CareerView.as_view(), name='career'),
+    path('site/', coreviews.SiteView.as_view(), name='site'),
+
 ]

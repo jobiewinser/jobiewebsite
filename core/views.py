@@ -13,6 +13,15 @@ class HomeView(TemplateView):
         temp = context['technologies'].first()
         return context
 
+class ProjectListView(TemplateView):
+    template_name='core/projectlist.html'
+
+    def get_context_data(self, **kwargs):
+
+        context = super(TemplateView, self).get_context_data(**kwargs)
+        context['projectlist'] = Project.objects.all() 
+        return context
+
 class ProjectView(TemplateView):
     template_name='core/project.html'
 
@@ -22,6 +31,20 @@ class ProjectView(TemplateView):
         context['project'] = Project.objects.filter(pk=kwargs['project_id']).first() 
         return context
 
+class CareerView(TemplateView):
+    template_name='core/career.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(TemplateView, self).get_context_data(**kwargs)
+        return context
+
+class SiteView(TemplateView):
+    template_name='core/site.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(TemplateView, self).get_context_data(**kwargs)
+        return context
+
 class Project_Image_Download(View):
     def get(self, request, **kwargs):
         projectimage = ProjectImage.objects.filter(pk=kwargs['projectimage_id']).first()
@@ -29,3 +52,4 @@ class Project_Image_Download(View):
             httpresponse = HttpResponse(projectimage.image.file, content_type='application/force-download')
             httpresponse['Content-Disposition'] = 'attachment; filename="'+projectimage.project.name+' Screenshot'+os.path.splitext(projectimage.image.file.name)[1]+'"'
             return httpresponse
+

@@ -21,9 +21,11 @@
     </style>
 {%endblock styles%}
 
+{% block home_nav_active %}active{%endblock home_nav_active%}
+
 {%block card_header%}
-    <a style="font-family:Roboto-Bold">Buzzword Bingo</a>
-    <input class="filter-form-control mr-sm-2" type="search" placeholder="Type a name" aria-label="Search" id="technologysearch">
+    <a style="font-family:Roboto-Bold">Buzzword Search</a>
+    <input class="filter-form-control form-control mr-sm-2" type="search" placeholder="Enter a Language, Technology or Project name" aria-label="Search" id="technologysearch" >
 {%endblock card_header%}
 
 {%block card_body%}
@@ -41,7 +43,7 @@
                                     <ul>
                                         {% for project in technology.project_set.all %}
                                             <li> 
-                                                <a href="/project/{{project.pk}}">{{project.name}}</a>
+                                                <a href="/project/{{project.pk}}" class="searchable-text">{{project.name}}</a>
                                             </li>
                                         {% endfor %}
                                     </ul>

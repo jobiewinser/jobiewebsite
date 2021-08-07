@@ -22,9 +22,10 @@
 
         {%block topnav%}
             <div class="topnav">
-                <a class="active" href="/">Jobie Winser</a>
-                <a class="" href="/projects">Projects</a>
-                <a class="" href="/site">How I built and deployed this site</a>
+                <a class="{% block home_nav_active %}{%endblock home_nav_active%}" href="/">Jobie Winser</a>
+                <a class="{% block projects_nav_active %}{%endblock projects_nav_active%}" href="/projects">Projects</a>
+                <a class="{% block career_nav_active %}{%endblock career_nav_active%}" href="/career">Career and Education</a>
+                <a class="{% block site_nav_active %}{%endblock site_nav_active%}" href="/site">How and Why I built and deployed this site</a>
             </div>
         {%endblock topnav%}
 
