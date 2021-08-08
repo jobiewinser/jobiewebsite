@@ -21,15 +21,15 @@
     </style>
 {%endblock styles%}
 
-{% block site_nav_active %}active{%endblock site_nav_active%}
+{% block enquiries_nav_active %}active{%endblock enquiries_nav_active%}
 
 {%block content%}
     <div class="card main-card">
         <div class="card-header">
-            How I built and deployed this site - <a href="https://github.com/jobiewinser/jobiewebsite" target="_blank">https://github.com/jobiewinser/jobiewebsite</a>
+            {% comment %} How I built and deployed this site - <a href="https://github.com/jobiewinser/jobiewebsite" target="_blank">https://github.com/jobiewinser/jobiewebsite</a> {% endcomment %}
         </div>
         <div class="card-body">
-            <div class="row">      
+            {% comment %} <div class="row">      
                 <div class="col">
                     <div class="card main-card">
                         <div class="card-header">
@@ -127,7 +127,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> {% endcomment %}
             
         </div>
     </div>

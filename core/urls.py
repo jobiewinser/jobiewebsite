@@ -24,5 +24,6 @@ urlpatterns = [
     path('project/image/<int:projectimage_id>', coreviews.Project_Image_Download.as_view(), name='project-image-download'),
     path('career/', coreviews.CareerView.as_view(), name='career'),
     path('site/', coreviews.SiteView.as_view(), name='site'),
+    path('enquiries/', coreviews.EnquiriesView.as_view(), name='enquiries'),
 
 ]
