@@ -50,8 +50,8 @@
                                     {% endif %}
                                 </td>
                                 <td>
-                                    {%for technology in project.technology.all %} 
-                                        {{technology.name}} 
+                                    {%for technology in project.technology.all %}
+                                        {% if not forloop.first %}, {% endif %}<a href="/projects/technology={{technology.pk}}">{{technology.name}}</a>
                                     {%endfor%}
                                 </td>
                                 <td>
