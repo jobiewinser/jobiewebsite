@@ -34,6 +34,8 @@
                     <th scope="col" class="one-line">Technologies{% if filter_type == 'Technology' %} - <a href="/projects/"><i style="font-size:12px">Clear Filter: {{filter_parameter}}</i></a>{% endif %}</th>
                     <th scope="col" class="one-line">Languages{% if filter_type == 'Language' %} - <a href="/projects/"><i style="font-size:12px">Clear Filter: {{filter_parameter}}</i></a>{% endif %}</th>
                     <th scope="col" class="one-line">Duration</th>
+                    <th scope="col" class="one-line">My Role</th>
+                    <th scope="col" class="one-line">Team size</th>
                     <th scope="col" class="one-line">Brief</th>
                     </tr>
                 </thead>
@@ -62,6 +64,8 @@
                                 <td class="one-line">
                                     {{ project.start|timesince:project.end }} {%if not project.end%}<i>(Ongoing)</i>{% endif %}
                                 </td>
+                                <td>{{project.role}}</td>
+                                <td>{{project.teamsize }}</td>
                                 <td>{{project.shortdescription}}</td>
                             </tr>
                         {%endfor%}

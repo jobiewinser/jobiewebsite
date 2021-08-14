@@ -13,123 +13,94 @@
 {%block styles%}
     {{block.super}}
     <style>
-        .tech-list {
-            columns: 4;
-            -webkit-columns: 4;
-            -moz-columns: 4;
-        }
+    .row {
+        width:100%;
+        margin:0px;
+    }
+    .no-bullet {
+        list-style-type: none; 
+    }
     </style>
 {%endblock styles%}
 
 {% block enquiries_nav_active %}active{%endblock enquiries_nav_active%}
 
 {%block content%}
-    <div class="card main-card">
-        <div class="card-header">
-            {% comment %} How I built and deployed this site - <a href="https://github.com/jobiewinser/jobiewebsite" target="_blank">https://github.com/jobiewinser/jobiewebsite</a> {% endcomment %}
-        </div>
-        <div class="card-body">
-            {% comment %} <div class="row">      
-                <div class="col">
-                    <div class="card main-card">
-                        <div class="card-header">
-                            Hardware
-                        </div>
-                        <div class="card-body">
-                            <ul>    
-                                <li>Raspberry Pi 4 4GB</li>
-                                <li>My personal PC</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>      
-                <div class="col-6">
-                    <div class="card main-card">
-                        <div class="card-header">
-                            Technologies, Packages, etc
-                        </div>
-                        <div class="card-body">
-                            <ul class="tech-list">    
-                                <li>Django</li>
-                                <li>CSS</li>
-                                <li>HTML</li>
-                                <li>Bootstrap</li>
-                                <li>Jquery</li>
-                                <li>Git</li>
-                                <li>PostgreSQL</li>
-                                <li>Nginx</li>
-                                <li>Gunicorn</li>
-                                <li>No-IP</li>
-                                <li>WSL 2 / Debian</li>
-                                <li>Virtualenv</li>
-                                <li>Visual Studio code + "Remote - WSL" extension</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>             
-                <div class="col">
-                    <div class="card main-card">
-                        <div class="card-header">
-                            NA
-                        </div>
-                        <div class="card-body">
-
+    <div class="row">
+        <div class="col-5">
+            <div class="card main-card" style="margin-right:0px">
+                <div class="card-header center">
+                    What can I create for you?
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                In short, there aren't many technical problems I can't solve, and a quick discussion with me detailing your desired system will clear up any roadblocks that I may encounter (e.g you want something that can't technically be accomplished).
+                            </p>
+                            <p>
+                                I welcome small clients who haven't gone through the development process before to enquire about my services, and can brief you on the whole process. 
+                            </p>
+                            <p>
+                                My skills lend themselves to many different problems. I can design, develop and deploy web systems with a spec delivered by my clients rapidly and flexibly. 
+                            </p>
+                            <p>
+                                I have experience with hosting services on AWS and will happily discuss the steps in designing, developing and deploying a web system.
+                            </p>
+                            <p>
+                                My usual focus is on functionality and productivity. I tend to be less focused on website design. If you want a simple attractive website, there are plenty of online services that will achieve that.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">      
-                <div class="col">
-                    <div class="card main-card">
-                        <div class="card-header">
-                            How
-                        </div>
-                        <div class="card-body">
-                            <ol>
-                                <li>
-                                    Without going into the specifics of the django project itself (as the commit history is all available using this <a href="https://github.com/jobiewinser/jobiewebsite/commits/main" target="_blank">link</a>), the deployment was relatively simple.
-                                </li>
-                                <br>
-                                <li>
-                                    I developed this site on my desktop pc using Microsoft's "Remote - WSL" extension from visual studio code. My Raspberry PI's /var/www/jobiewebsite directory was set up in exactly the same way as my wsl virtual debian machine, other than using a different .env file, which contains the django secret key along with database credentials.
-                                </li>
-                                <br>
-                                <li>
-                                    I added my ssh key to the pi, forwarded the ports on my router for ssh and the port for my django site to be reached. I set up No-IP so that <a href="jobiewinser.ddns.net" target="_blank">jobiewinser.ddns.net</a> redirects to my non-static ip.
-                                </li>
-                                <br>
-                                <li>
-                                    I set up gunicorn and nginx to use http to safely deploy my website and also serve static/media files correctly.
-                                </li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>              
-                <div class="col">
-                    <div class="card main-card">
-                        <div class="card-header">
-                            Why
-                        </div>
-                        <div class="card-body">
+        </div>
+
+        <div class="col-5">
+            <div class="card main-card" style="margin-right:0px">
+                <div class="card-header center">
+                    Who should Enquire?
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
                             <p>
-                                Put simply, it was a fun challenge to measure my progress as a full-stack developer and especially my DevOps skills. I wanted to deploy my own site as I would in a professional setting.
+                                Anybody. Send me an email, briefing me on what you want to achieve with a web system and I'll get back to you. 
                             </p>
                             <p>
-                                As a secondary objective, I wanted a tech demo to demonstrate my ability to rapidly create dynamic web systems that can be updated and changed by non-tech savvy users.          
-                            </p>
-                            <p>
-                                With the above in mind, the home page contaings various technologies that I have used throughout my career which are contained in a PostgreSQL database and able to be editted and or 
-                                appended quickly through the django admin panel. New entries are then avaiable immediately on the homepage and filterable by Language, Project or Technology used.          
-                            </p>
-                            <p>
-                                The structure for the Projects, Languages and Technologies can be found at:  <a href="https://github.com/jobiewinser/jobiewebsite/blob/main/core/models.py" target="_blank">models.py</a>.
+                                Pending an email discussion on the basic goals of the project, a further video call will help to define the features you require.
                             </p>
                         </div>
                     </div>
                 </div>
-            </div> {% endcomment %}
-            
+            </div>
+        </div>
+
+        <div class="col-2" >
+            <div class="card main-card">
+                <div class="card-header center">
+                    Contact
+                </div>
+                <div class="card-body">
+                    <p>
+                        <b>Email</b>
+                        <br>
+                        jobiewinser@live.co.uk                        
+                    </p>                    
+                </div>
+            </div>
+            <div class="card main-card">
+                <div class="card-header center">
+                    Pricing
+                </div>
+                <div class="card-body">
+                    <p>
+                        <b>Dependant on project scope</b>  
+                        <br>
+                        I'm a solo developer in my freetime. I don't have a set price and will offer competitive pricing                    
+                    </p>                    
+                </div>
+            </div>
         </div>
     </div>
-    
 {%endblock content%}

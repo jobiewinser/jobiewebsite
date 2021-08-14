@@ -33,6 +33,8 @@ class Project(models.Model):
     technology = models.ManyToManyField(Technology)
     htmldescription = models.CharField(null = True, max_length = 4000, blank=True)
     shortdescription = models.CharField(null = True, max_length = 1000, blank=True)
+    role = models.CharField(null = True, max_length = 100, blank=True)
+    teamsize = models.IntegerField(null = True, blank=True)
 
     def __str__(self):
         return self.name
