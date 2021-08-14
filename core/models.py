@@ -16,8 +16,8 @@ class Language(models.Model):
 
 class Technology(models.Model):
     name = models.CharField(null = True, max_length = 225, blank=True)
-    type = models.ManyToManyField(TechnologyType)
-    language = models.ManyToManyField(Language)
+    type = models.ManyToManyField(TechnologyType, blank=True)
+    language = models.ManyToManyField(Language, blank=True)
     image = models.FileField(null = True, upload_to='technology-images')
     priority = models.IntegerField(null = True, blank=True)
     htmldescription = models.CharField(null = True, max_length = 500, blank=True)
@@ -30,7 +30,7 @@ class Project(models.Model):
     name = models.CharField(null = True, max_length = 225, blank=True)
     start = models.DateField(null=True, blank=True)
     end = models.DateField(null=True, blank=True)
-    technology = models.ManyToManyField(Technology)
+    technology = models.ManyToManyField(Technology, blank=True)
     htmldescription = models.CharField(null = True, max_length = 4000, blank=True)
     shortdescription = models.CharField(null = True, max_length = 1000, blank=True)
     role = models.CharField(null = True, max_length = 100, blank=True)
