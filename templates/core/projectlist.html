@@ -66,7 +66,7 @@
                                 </td>
                                 <td>{{project.role}}</td>
                                 <td>{{project.teamsize }}</td>
-                                <td>{{project.shortdescription}}</td>
+                                <td>{{project.shortdescription|safe}}</td>
                             </tr>
                         {%endfor%}
                         {% if request.user.is_superuser %}

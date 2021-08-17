@@ -32,7 +32,7 @@ class Project(models.Model):
     end = models.DateField(null=True, blank=True)
     technology = models.ManyToManyField(Technology, blank=True)
     htmldescription = models.CharField(null = True, max_length = 4000, blank=True)
-    shortdescription = models.CharField(null = True, max_length = 1000, blank=True)
+    shorthtmldescription = models.CharField(null = True, max_length = 1000, blank=True)
     role = models.CharField(null = True, max_length = 100, blank=True)
     teamsize = models.IntegerField(null = True, blank=True)
 
