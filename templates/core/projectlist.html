@@ -46,7 +46,7 @@
                                 <td class="one-line">
                                     <a href="/project/{{project.pk}}">{{project.name}}</a>
                                     {% if request.user.is_superuser %}
-                                        <a href="/admin/core/project/{{project.pk}}/change/" target="_blank" style="color:green">Edit</a>
+                                        <a href="/admin/core/project/{{project.pk}}/change/" target="_blank" style="color:green"><i class="fas fa-edit"></i> Edit</a>
                                     {% endif %}
                                 </td>
                                 <td>
@@ -69,8 +69,10 @@
                                 <td>{{project.shortdescription}}</td>
                             </tr>
                         {%endfor%}
-                    {%else%}
-                        <tr><td colspan="5" class="center">No Projects for <span style="font-family:Roboto-Bold">{{filter_type}} = {{filter_parameter}}</span></td></tr>
+                    {%elif request.user.is_superuser%}
+                        <tr><td colspan="7" class="center">No Projects {% if filter_type %} for <span style="font-family:Roboto-Bold">{{filter_type}} = {{filter_parameter}}</span> {%endif%} <a href="/admin/core/project/add/" target="_blank" style="color:green">  <i class="fas fa-plus-circle"></i> Add</a></td></tr>
+                    {% else %}
+                        <tr><td colspan="7" class="center"><a href="/admin/core/project/add/" target="_blank" style="color:green"><i class="fas fa-plus-circle"></i> Add</a></td></tr>
                     {% endif %}
                 </tbody>
             </table>
