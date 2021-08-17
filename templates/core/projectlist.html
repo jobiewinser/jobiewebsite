@@ -57,7 +57,7 @@
                                 <td>
                                     {%for technology in project.technology.all %} 
                                         {%for language in technology.language.all %} 
-                                            {{language.name}} 
+                                            {% if not forloop.parentloop.first %}, {% endif %}<a href="/projects/language={{language.pk}}">{{language.name}}</a>
                                         {%endfor%}
                                     {%endfor%}
                                 </td>
