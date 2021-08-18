@@ -116,7 +116,7 @@
                 <div class="col-lg-3 projectimage" id="projectimage-{{projectimage.pk}}" data-searchable="true">
                     <div class="card image-card filter-card h-140" style="">
                         <div class="card-body image-card-body" style="">
-                            <img type="button" onclick="$('#image-modal-image').prop('src', '/media/{{projectimage.image}}'); $('#download-link').prop('action', '/project/image/{{projectimage.pk}}'); $('#image-modal-description').html('{{projectimage.htmldescription|safe}}');" data-toggle="modal" data-target="#image-modal" class="card-img-top" src="/media/{{projectimage.image}}">
+                            <img type="button" onclick="$('#image-modal-image').prop('src', '/media/{{projectimage.image}}'); $('#download-link').prop('action', '/project/image/{{projectimage.pk}}'); $('#image-modal-description').html('{{projectimage.htmldescription|escapejs}}');" data-toggle="modal" data-target="#image-modal" class="card-img-top" src="/media/{{projectimage.image}}">
                         </div>
                     </div>
                 </div>
