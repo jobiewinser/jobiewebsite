@@ -1,20 +1,31 @@
 from django.contrib import admin, auth
-from core.models import Technology, TechnologyType, Language
+from core.models import Technology, TechnologyType, Language, ProjectImage, Project
+
+    
+class ProjectAdmin(admin.ModelAdmin):
+    search_fields = ['pk', 'name', 'role', 'teamsize', 'start', 'end', 'shorthtmldescription']
+    list_display = ['pk', 'name', 'role', 'teamsize', 'start', 'end', 'shorthtmldescription']
+admin.site.register(Project, ProjectAdmin)
 
 class TechnologyAdmin(admin.ModelAdmin):
-    search_fields = ['name', 'type']
+    search_fields = ['pk', 'name', 'type']
+    list_display = ['pk', 'name']
 admin.site.register(Technology, TechnologyAdmin)
 
 class TechnologyTypeAdmin(admin.ModelAdmin):
-    search_fields = ['name']
+    search_fields = ['pk', 'name']
+    list_display = ['pk', 'name']
 admin.site.register(TechnologyType, TechnologyTypeAdmin)
 
 class LanguageAdmin(admin.ModelAdmin):
-    search_fields = ['name']
+    search_fields = ['pk', 'name']
+    list_display = ['pk', 'name']
 admin.site.register(Language, LanguageAdmin)
 
-
-
+class ProjectImageAdmin(admin.ModelAdmin):
+    search_fields = ['pk', 'image', 'htmldescription', 'project', 'priority']
+    list_display = ['pk', 'image', 'htmldescription', 'project', 'priority']
+admin.site.register(ProjectImage, ProjectImageAdmin)
 
 from django.apps import apps
 models = apps.get_models()
