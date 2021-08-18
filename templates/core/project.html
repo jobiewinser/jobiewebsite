@@ -112,7 +112,7 @@
 
     <div class="card main-card">
         <div class="row">
-            {%for projectimage in project.projectimage_set.all%}
+            {%for projectimage in project.projectimage_set.all.reverse%}
                 <div class="col-lg-3 projectimage" id="projectimage-{{projectimage.pk}}" data-searchable="true">
                     <div class="card image-card filter-card h-140" style="">
                         <div class="card-body image-card-body" style="">
