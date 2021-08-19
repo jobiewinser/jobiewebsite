@@ -24,111 +24,113 @@
 {% block site_nav_active %}active{%endblock site_nav_active%}
 
 {%block content%}
-    <div class="card main-card">
-        <div class="card-header">
-            How I built and deployed this site - <a href="https://github.com/jobiewinser/jobiewebsite" target="_blank">https://github.com/jobiewinser/jobiewebsite</a>
-        </div>
-        <div class="card-body">
-            <div class="row">      
-                <div class="col-sm">
-                    <div class="card main-card">
-                        <div class="card-header">
-                            Hardware
-                        </div>
-                        <div class="card-body">
-                            <ul>    
-                                <li>Raspberry Pi 4 4GB</li>
-                                <li>My personal PC</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>      
-                <div class="col-sm">
-                    <div class="card main-card">
-                        <div class="card-header">
-                            Technologies, Packages, etc
-                        </div>
-                        <div class="card-body">
-                            <ul class="tech-list">    
-                                <li>Django</li>
-                                <li>CSS</li>
-                                <li>HTML</li>
-                                <li>Bootstrap</li>
-                                <li>Jquery</li>
-                                <li>Git</li>
-                                <li>PostgreSQL</li>
-                                <li>Nginx</li>
-                                <li>Gunicorn</li>
-                                <li>No-IP</li>
-                                <li>WSL 2 / Debian</li>
-                                <li>Virtualenv</li>
-                                <li>Visual Studio code</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>             
-                {% comment %} <div class="col-sm">
-                    <div class="card main-card">
-                        <div class="card-header">
-                            NA
-                        </div>
-                        <div class="card-body">
-
-                        </div>
-                    </div>
-                </div> {% endcomment %}
+    <div class="layout-margin-custom p-1">
+        <div class="card main-card">
+            <div class="card-header">
+                How I built and deployed this site - <a href="https://github.com/jobiewinser/jobiewebsite" target="_blank">https://github.com/jobiewinser/jobiewebsite</a>
             </div>
-            <div class="row">      
-                <div class="col-sm">
-                    <div class="card main-card">
-                        <div class="card-header">
-                            How
+            <div class="card-body">
+                <div class="row">      
+                    <div class="col-sm p-1">
+                        <div class="card main-card">
+                            <div class="card-header">
+                                Hardware
+                            </div>
+                            <div class="card-body">
+                                <ul>    
+                                    <li>Raspberry Pi 4 4GB</li>
+                                    <li>My personal PC</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <ol>
-                                <li>
-                                    Without going into the specifics of the django project itself (as the commit history is all available using this <a href="https://github.com/jobiewinser/jobiewebsite/commits/main" target="_blank">link</a>), the deployment was relatively simple.
-                                </li>
-                                <br>
-                                <li>
-                                    I developed this site on my desktop pc using Microsoft's "Remote - WSL" extension from visual studio code. My Raspberry PI's /var/www/jobiewebsite directory was set up in exactly the same way as my wsl virtual debian machine, other than using a different .env file, which contains the django secret key along with database credentials.
-                                </li>
-                                <br>
-                                <li>
-                                    I added my ssh key to the pi, forwarded the ports on my router for ssh and the port for my django site to be reached. I set up No-IP so that <a href="http://jobiewinser.ddns.net/" target="_blank">jobiewinser.ddns.net</a> redirects to my non-static ip.
-                                </li>
-                                <br>
-                                <li>
-                                    I set up gunicorn and nginx to use http to safely deploy my website and also serve static/media files correctly.
-                                </li>
-                            </ol>
+                    </div>      
+                    <div class="col-sm p-1">
+                        <div class="card main-card">
+                            <div class="card-header">
+                                Technologies, Packages, etc
+                            </div>
+                            <div class="card-body">
+                                <ul class="tech-list">    
+                                    <li>Django</li>
+                                    <li>CSS</li>
+                                    <li>HTML</li>
+                                    <li>Bootstrap</li>
+                                    <li>Jquery</li>
+                                    <li>Git</li>
+                                    <li>PostgreSQL</li>
+                                    <li>Nginx</li>
+                                    <li>Gunicorn</li>
+                                    <li>No-IP</li>
+                                    <li>WSL 2 / Debian</li>
+                                    <li>Virtualenv</li>
+                                    <li>Visual Studio code</li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                </div>              
-                <div class="col-sm">
-                    <div class="card main-card">
-                        <div class="card-header">
-                            Why
+                    </div>             
+                    {% comment %} <div class="col-sm">
+                        <div class="card main-card">
+                            <div class="card-header">
+                                NA
+                            </div>
+                            <div class="card-body">
+
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <p>
-                                Put simply, it was a fun challenge to measure my progress as a full-stack developer and especially my DevOps skills. I wanted to deploy my own site as I would in a professional setting.
-                            </p>
-                            <p>
-                                As a secondary objective, I wanted a tech demo to demonstrate my ability to rapidly create dynamic web systems that can be updated and changed by non-tech savvy users.          
-                            </p>
-                            <p>
-                                With the above in mind, the home page contains various technologies that I have used throughout my career which are contained in a PostgreSQL database and able to be edited and or 
-                                appended quickly through the django admin panel. New entries are then available immediately on the homepage and filterable by Language, Project or Technology used.          
-                            </p>
-                            <p>
-                                The structure for the Projects, Languages and Technologies can be found at:  <a href="https://github.com/jobiewinser/jobiewebsite/blob/main/core/models.py" target="_blank">models.py</a>.
-                            </p>
+                    </div> {% endcomment %}
+                </div>
+                <div class="row">      
+                    <div class="col-sm p-1">
+                        <div class="card main-card">
+                            <div class="card-header">
+                                How
+                            </div>
+                            <div class="card-body">
+                                <ol>
+                                    <li>
+                                        Without going into the specifics of the django project itself (as the commit history is all available using this <a href="https://github.com/jobiewinser/jobiewebsite/commits/main" target="_blank">link</a>), the deployment was relatively simple.
+                                    </li>
+                                    <br>
+                                    <li>
+                                        I developed this site on my desktop pc using Microsoft's "Remote - WSL" extension from visual studio code. My Raspberry PI's /var/www/jobiewebsite directory was set up in exactly the same way as my wsl virtual debian machine, other than using a different .env file, which contains the django secret key along with database credentials.
+                                    </li>
+                                    <br>
+                                    <li>
+                                        I added my ssh key to the pi, forwarded the ports on my router for ssh and the port for my django site to be reached. I set up No-IP so that <a href="http://jobiewinser.ddns.net/" target="_blank">jobiewinser.ddns.net</a> redirects to my non-static ip.
+                                    </li>
+                                    <br>
+                                    <li>
+                                        I set up gunicorn and nginx to use http to safely deploy my website and also serve static/media files correctly.
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>              
+                    <div class="col-sm p-1">
+                        <div class="card main-card">
+                            <div class="card-header">
+                                Why
+                            </div>
+                            <div class="card-body">
+                                <p>
+                                    Put simply, it was a fun challenge to measure my progress as a full-stack developer and especially my DevOps skills. I wanted to deploy my own site as I would in a professional setting.
+                                </p>
+                                <p>
+                                    As a secondary objective, I wanted a tech demo to demonstrate my ability to rapidly create dynamic web systems that can be updated and changed by non-tech savvy users.          
+                                </p>
+                                <p>
+                                    With the above in mind, the home page contains various technologies that I have used throughout my career which are contained in a PostgreSQL database and able to be edited and or 
+                                    appended quickly through the django admin panel. New entries are then available immediately on the homepage and filterable by Language, Project or Technology used.          
+                                </p>
+                                <p>
+                                    The structure for the Projects, Languages and Technologies can be found at:  <a href="https://github.com/jobiewinser/jobiewebsite/blob/main/core/models.py" target="_blank">models.py</a>.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
+                
             </div>
-            
         </div>
     </div>
     

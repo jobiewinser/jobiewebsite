@@ -184,7 +184,7 @@
     <div class="card main-card">
         <div class="row">
             {%for projectimage in project.projectimage_set.all%}
-                <div class="col-sm projectimage" id="projectimage-{{projectimage.pk}}" data-searchable="true">
+                <div class="col-sm p-1 projectimage" id="projectimage-{{projectimage.pk}}" data-searchable="true">
                     <div class="card image-card filter-card" style="">
                         <div class="card-body image-card-body" style="min-width:400px">
                             <img loading="lazy" type="button" onclick="$('#image-modal-image').prop('src', '/media/{{projectimage.image}}'); $('#download-link').prop('action', '/project/image/{{projectimage.pk}}'); $('#image-modal-description').html('{{projectimage.htmldescription|escapejs}}');" data-toggle="modal" data-target="#image-modal" class="card-img-top lazy" data-src="/media/{{projectimage.image}}">

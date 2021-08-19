@@ -22,7 +22,7 @@
 
     <body>
 
-        {%block topnav%}
+        {%block navbar%}
             <div class="topnav">
                 <a class="{% block home_nav_active %}{%endblock home_nav_active%}" href="/">Technologies</a>
                 <a class="{% block projects_nav_active %}{%endblock projects_nav_active%}" href="/projects">Projects</a>
@@ -30,22 +30,25 @@
                 <a class="{% block site_nav_active %}{%endblock site_nav_active%}" href="/site">This Site</a>
                 <a class="{% block enquiries_nav_active %}{%endblock enquiries_nav_active%}" href="/enquiries">Enquiries</a>
             </div>
-        {%endblock topnav%}
-
-        {%block content%}
-            <div class="card">
-                <div class="card-header">
-                    {%block card_header%}
-                    
-                    {%endblock card_header%}
-                </div>
-                <div class="card-body">
-                    {%block card_body%}
-                    
-                    {%endblock card_body%}
-                </div>
-            </div>
-        {%endblock content%}
+        {%endblock navbar%}
+        
+        <div class="content">
+            {%block content%}
+                    <div class="card">
+                        {% comment %} <div class="card-header">
+                            {%block card_header%}
+                            
+                            {%endblock card_header%}
+                        </div> {% endcomment %}
+                        <div class="card-body">
+                            {%block card_body%}
+                            
+                            {%endblock card_body%}
+                        </div>
+                    </div>
+            {%endblock content%}
+        </div>
+        
     </body>
 </html>
 
