@@ -39,7 +39,7 @@
                 <div class="col-sm pb-3" id="technology-{{technology.pk}}" data-searchable="true">
                     <div class="card filter-card h-100">
                         <div style="height:100px">
-                            <a href="/projects/technology={{technology.pk}}"><img class="card-img-top" src="media/{{technology.image}}"></a>
+                            <a href="/projects/technology={{technology.pk}}"><img class="img-top" src="media/{{technology.image}}"></a>
                         </div>
                         <div class="card-body">
                             <h5 class="filter-card-title searchable-text"><a href="/projects/technology={{technology.pk}}">{{technology.name}} {% if request.user.is_superuser %} <a href="/admin/core/technology/{{technology.pk}}/change/" target="_blank" style="color:green"><i class="fas fa-edit"></i> Edit</a> {% endif %}</a></h5> 
