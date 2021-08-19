@@ -29,14 +29,14 @@
 
 {%block card_header%}
     <a style="font-family:Roboto-Bold">Buzzword Search</a>
-    <input class="filter-form-control form-control mr-sm-2" type="search" placeholder="Enter a Language, Technology or Project name" aria-label="Search" id="technologysearch" >
+    <input class="filter-form-control form-control mr-sm-2" type="search" placeholder="Enter a Language, Technology or Project" aria-label="Search" id="technologysearch" >
 {%endblock card_header%}
 
 {%block card_body%}
     <div class="layout-margin-8 mt-5">
         <div class="row">
             {%for technology in technologies%}
-                <div class="col-lg-3 pb-3" id="technology-{{technology.pk}}" data-searchable="true">
+                <div class="col-sm pb-3" id="technology-{{technology.pk}}" data-searchable="true">
                     <div class="card filter-card h-100">
                         <div style="height:100px">
                             <a href="/projects/technology={{technology.pk}}"><img class="card-img-top" src="media/{{technology.image}}"></a>
@@ -68,7 +68,7 @@
                 </div>
             {%endfor%}
             {% if request.user.is_superuser %}
-                <div class="col-lg-3 pb-3" id="technology-{{technology.pk}}" data-searchable="true">
+                <div class="col-sm pb-3" id="technology-{{technology.pk}}" data-searchable="true">
                     <div class="card filter-card h-100">
                         <div class="card-body">
                             <h5 class="filter-card-title searchable-text"><a href="/admin/core/technology/add/" target="_blank" style="color:green"><i class="fas fa-plus-circle"></i> Add</a></h5>
