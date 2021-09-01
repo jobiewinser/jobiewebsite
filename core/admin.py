@@ -1,28 +1,28 @@
 from django.contrib import admin, auth
 from core.models import Technology, TechnologyType, Language, ProjectImage, Project
-
+from import_export.admin import ImportExportModelAdmin
     
-class ProjectAdmin(admin.ModelAdmin):
+class ProjectAdmin(ImportExportModelAdmin):
     search_fields = ['pk', 'name', 'role', 'teamsize', 'start', 'end', 'shorthtmldescription']
     list_display = ['pk', 'name', 'role', 'teamsize', 'start', 'end', 'shorthtmldescription']
 admin.site.register(Project, ProjectAdmin)
 
-class TechnologyAdmin(admin.ModelAdmin):
+class TechnologyAdmin(ImportExportModelAdmin):
     search_fields = ['pk', 'name', 'type']
     list_display = ['pk', 'name']
 admin.site.register(Technology, TechnologyAdmin)
 
-class TechnologyTypeAdmin(admin.ModelAdmin):
+class TechnologyTypeAdmin(ImportExportModelAdmin):
     search_fields = ['pk', 'name']
     list_display = ['pk', 'name']
 admin.site.register(TechnologyType, TechnologyTypeAdmin)
 
-class LanguageAdmin(admin.ModelAdmin):
+class LanguageAdmin(ImportExportModelAdmin):
     search_fields = ['pk', 'name']
     list_display = ['pk', 'name']
 admin.site.register(Language, LanguageAdmin)
 
-class ProjectImageAdmin(admin.ModelAdmin):
+class ProjectImageAdmin(ImportExportModelAdmin):
     search_fields = ['pk', 'image', 'htmldescription', 'project', 'priority']
     list_display = ['pk', 'image', 'htmldescription', 'project', 'priority']
 admin.site.register(ProjectImage, ProjectImageAdmin)
