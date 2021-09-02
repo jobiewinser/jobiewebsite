@@ -7,3 +7,4 @@ sqlparse==0.4.1
 typing-extensions==3.10.0.0
 python-dotenv==0.17.1
 django-import-export==2.5.0
+python-kasa --pre
