@@ -139,3 +139,9 @@ migrations
 media/**
 static/**
 static/css/base.css
+asgi.py
+jobiewebsitegeany
+nano.save
+settings.py1
+.requirements.txt.swp
+__init__.py

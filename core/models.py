@@ -1,6 +1,33 @@
 from django.db import models
 from django.db.models.deletion import SET_NULL
 
+class HomeDevice(models.Model):
+    sw_ver = models.CharField(null = True, max_length = 225, blank=True)
+    hw_ver = models.CharField(null = True, max_length = 225, blank=True)
+    type = models.CharField(null = True, max_length = 225, blank=True)
+    hwId = models.CharField(null = True, max_length = 225, blank=True)
+    fwId = models.CharField(null = True, max_length = 225, blank=True)
+    oemId = models.CharField(null = True, max_length = 225, blank=True)
+    dev_name = models.CharField(null = True, max_length = 225, blank=True)
+    alias = models.CharField(null = True, max_length = 225, blank=True)
+    updated = models.DateTimeField(auto_now=True)
+    mac = models.CharField(max_length = 225, unique=True)
+
+    def __str__(self):
+        return self.dev_name
+
+class HomePlug(HomeDevice):
+
+    def __str__(self):
+        return self.dev_name
+
+class EnergyDayReading(models.Model):
+    homeplug = models.ForeignKey(HomePlug, on_delete=models.CASCADE)
+    date = models.DateField(null=True, blank=True)
+    nice_date = models.CharField(null = True, max_length = 225, blank=True)
+    energy_wh = models.IntegerField(null = True, blank=True)
+
+
 class TechnologyType(models.Model):
     name = models.CharField(null = True, max_length = 225, blank=True)
 

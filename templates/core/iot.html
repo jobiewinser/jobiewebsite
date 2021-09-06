@@ -1,0 +1,89 @@
+{% extends 'core/base.html' %}
+
+{%block scripts%}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    {{block.super}}
+    <script>
+        $(document).ready(function() {
+            $(function () {
+                var $energyChart = $("#energy-chart");
+                var respStatus = $.ajax({
+                    url: $energyChart.data("url"),
+                    success: function (data) {
+
+                        var ctx = $energyChart[0].getContext("2d");
+
+                        new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                            labels: data.labels,
+                            datasets: [{
+                                label: 'Watt Hours consumed',
+                                backgroundColor: 'blue',
+                                data: data.data
+                            }]          
+                            },
+                            options: {
+                            responsive: true,
+                            legend: {
+                                position: 'top',
+                            },
+                            title: {
+                                display: true,
+                                text: 'Desktop PC Energy Consumption'
+                            }
+                            }
+                        });
+
+                    }
+                });
+
+            });
+        });
+
+    </script>
+    <script>
+
+        
+
+    </script>
+{%endblock scripts%}
+
+{%block styles%}
+    {{block.super}}
+    <style>
+    .row {
+        width:100%;
+        margin:0px;
+    }
+    .no-bullet {
+        list-style-type: none; 
+    }
+    </style>
+{%endblock styles%}
+
+{% block iot_nav_active %}active{%endblock iot_nav_active%}
+
+{%block content%}
+    <div class="layout-margin-custom">
+        <div class="row"> 
+            <div id="container" style="width: 75%;">
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="layout-margin-8 mt-5">
+        <div class="row">
+            <div class="col-sm pb-6" style="" id="technology-{{technology.pk}}" data-searchable="true">
+                <div class="card filter-card ">
+                    <canvas id="energy-chart" data-url="{% url 'energy-chart' %}"></canvas>
+                </div>
+            </div>
+            <div class="col-sm pb-6" style="" id="technology-{{technology.pk}}" data-searchable="true">
+                <div class="card filter-card ">
+                </div>
+            </div>
+        </div>
+    </div>
+{%endblock content%}
