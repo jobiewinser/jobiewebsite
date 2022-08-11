@@ -65,6 +65,8 @@ class Project(models.Model):
 
     def __str__(self):
         return self.name
+    def get_languages(self):
+        return Language.objects.filter(technology__in=self.technology.all()).distinct('pk')
     
 class ProjectImage(models.Model):
     image = models.FileField(null = True, upload_to='technology-images')

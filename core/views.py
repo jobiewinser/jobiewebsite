@@ -93,7 +93,7 @@ class ProjectListView(TemplateView):
     def get_context_data(self, **kwargs):
 
         context = super(ProjectListView, self).get_context_data(**kwargs)
-        context['projectlist'] = Project.objects.all() 
+        context['projectlist'] = Project.objects.all().order_by('-start')
         if 'technology_id' in kwargs:
             filter_technology = Technology.objects.filter(pk=kwargs['technology_id']).first()
             context['projectlist'] = context['projectlist'].filter(technology=filter_technology)

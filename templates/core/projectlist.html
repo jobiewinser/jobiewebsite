@@ -12,6 +12,18 @@
 {%block styles%}
     {{block.super}}
     <style>
+        .language-ul{
+            padding-left: 5px;
+        }
+        .technology-ul{
+            columns: 2;
+            -webkit-columns: 2;
+            -moz-columns: 2;
+            padding-left: 5px;
+        }
+        .technology-ul > li,.language-ul > li{
+            padding-right:8px;
+        }
     </style>
 {%endblock styles%}
 
@@ -31,6 +43,7 @@
                         <th scope="col" class="one-line">Brief</th>
                         <th scope="col" class="one-line">Technologies that I used{% if filter_type == 'Technology' %} - <a href="/projects/"><i style="font-size:12px">Clear Filter: {{filter_parameter}}</i></a>{% endif %}</th>
                         <th scope="col" class="one-line">Languages{% if filter_type == 'Language' %} - <a href="/projects/"><i style="font-size:12px">Clear Filter: {{filter_parameter}}</i></a>{% endif %}</th>
+                        <th scope="col" class="one-line">Start Date</th>
                         <th scope="col" class="one-line">Duration</th>
                         <th scope="col" class="one-line">My role</th>
                         <th scope="col" class="one-line">Team size</th>
@@ -48,16 +61,22 @@
                                     </td>
                                     <td style="min-width:300px">{{project.shorthtmldescription|safe}}</td>
                                     <td>
-                                        {%for technology in project.technology.all %}
-                                            {% if not forloop.first %}, {% endif %}<a href="/projects/technology={{technology.pk}}" class="nowrap">{{technology.name}}</a>
-                                        {%endfor%}
+                                        <ul class="technology-ul">
+                                            {%for technology in project.technology.all %}
+                                            <li><a href="/projects/technology={{technology.pk}}" class="nowrap">{{technology.name}}</a></li>
+                                            {%endfor%}
+                                        </ul>
                                     </td>
                                     <td>
-                                        {%for technology in project.technology.all %} 
-                                            {%for language in technology.language.all %} 
-                                                {% if not forloop.parentloop.first %}, {% endif %}<a href="/projects/language={{language.pk}}" class="nowrap">{{language.name}}</a>
+                                        <ul class="language-ul">
+                                            {%for language in project.get_languages %} 
+                                                <li><a href="/projects/language={{language.pk}}" class="nowrap">{{language.name}}</a></li>
                                             {%endfor%}
-                                        {%endfor%}
+                                        </ul>
+                                        
+                                    </td>
+                                    <td class="one-line">
+                                        {{ project.start}}
                                     </td>
                                     <td class="one-line">
                                         {{ project.start|timesince:project.end }} {%if not project.end%}<i>(Ongoing)</i>{% endif %}
