@@ -134,8 +134,6 @@ staticfiles/**
 migrations
 
 media/**
-static/**
-static/css/base.css
 asgi.py
 jobiewebsitegeany
 nano.save
