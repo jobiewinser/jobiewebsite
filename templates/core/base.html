@@ -18,6 +18,15 @@
         {%endblock scripts%}
 
         {%block styles%}
+        <style>
+            .row {
+                width:100%;
+                margin:0px;
+            }
+            .no-bullet {
+                list-style-type: none; 
+            }
+        </style>
         {%endblock styles%}
         
     </head>
@@ -26,13 +35,13 @@
 
         {%block navbar%}
             <div class="topnav">
-                <a class="{% block home_nav_active %}{%endblock home_nav_active%}" href="/">Technologies</a>
-                <a class="{% block projects_nav_active %}{%endblock projects_nav_active%}" href="/projects">Projects</a>
-                <a class="{% block career_nav_active %}{%endblock career_nav_active%}" href="/career">Career and Education</a>
-                <a class="{% block site_nav_active %}{%endblock site_nav_active%}" href="/site">This Site</a>
-                <a class="{% block enquiries_nav_active %}{%endblock enquiries_nav_active%}" href="/enquiries">Enquiries</a>
+                <a class="{% block about_me_active %}{%endblock about_me_active%}" href="{% url 'about_me' %}">About Me</a>
+                <a class="{% block home_nav_active %}{%endblock home_nav_active%}" href="{% url 'home' %}">Technologies</a>
+                <a class="{% block projects_nav_active %}{%endblock projects_nav_active%}" href="{% url 'projects' %}">Projects</a>
+                <a class="{% block career_nav_active %}{%endblock career_nav_active%}" href="{% url 'career' %}">Career and Education</a>
+                <a class="{% block site_nav_active %}{%endblock site_nav_active%}" href="{% url 'site' %}">This Site</a>
+                {% comment %} <a class="{% block enquiries_nav_active %}{%endblock enquiries_nav_active%}" href="/enquiries">Enquiries</a> {% endcomment %}
                 {% comment %} <a class="{% block iot_nav_active %}{%endblock iot_nav_active%}" href="/iot">Internet of things (WIP)</a> {% endcomment %}
-                <a class="{% block test_active %}{%endblock test_active%}" href="/test">Test</a>
             </div>
         {%endblock navbar%}
         

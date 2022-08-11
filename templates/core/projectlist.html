@@ -41,8 +41,8 @@
                         <tr>
                         <th scope="col" class="one-line">Name</th>
                         <th scope="col" class="one-line">Brief</th>
-                        <th scope="col" class="one-line">Technologies that I used{% if filter_type == 'Technology' %} - <a href="/projects/"><i style="font-size:12px">Clear Filter: {{filter_parameter}}</i></a>{% endif %}</th>
-                        <th scope="col" class="one-line">Languages{% if filter_type == 'Language' %} - <a href="/projects/"><i style="font-size:12px">Clear Filter: {{filter_parameter}}</i></a>{% endif %}</th>
+                        <th scope="col" class="one-line">Technologies that I used{% if filter_type == 'Technology' %} - <a href="{% url 'projects' %}"><i style="font-size:12px">Clear Filter: {{filter_parameter}}</i></a>{% endif %}</th>
+                        <th scope="col" class="one-line">Languages{% if filter_type == 'Language' %} - <a href="{% url 'projects' %}"><i style="font-size:12px">Clear Filter: {{filter_parameter}}</i></a>{% endif %}</th>
                         <th scope="col" class="one-line">Start Date</th>
                         <th scope="col" class="one-line">Duration</th>
                         <th scope="col" class="one-line">My role</th>
@@ -54,7 +54,7 @@
                             {%for project in projectlist%}
                                 <tr>
                                     <td class="one-line">
-                                        <a href="/project/{{project.pk}}">{{project.name}}</a>
+                                        <a href="{% url 'project' project_id=project.pk %}">{{project.name}}</a>
                                         {% if request.user.is_superuser %}
                                             <a href="/admin/core/project/{{project.pk}}/change/" target="_blank" style="color:green" class="nowrap"><i class="fas fa-edit"></i> Edit</a>
                                         {% endif %}
@@ -63,14 +63,14 @@
                                     <td>
                                         <ul class="technology-ul">
                                             {%for technology in project.technology.all %}
-                                            <li><a href="/projects/technology={{technology.pk}}" class="nowrap">{{technology.name}}</a></li>
+                                            <li><a href="{% url 'projects' technology_id=technology.pk %}" class="nowrap">{{technology.name}}</a></li>
                                             {%endfor%}
                                         </ul>
                                     </td>
                                     <td>
                                         <ul class="language-ul">
                                             {%for language in project.get_languages %} 
-                                                <li><a href="/projects/language={{language.pk}}" class="nowrap">{{language.name}}</a></li>
+                                                <li><a href="{% url 'projects' language_id=language.pk %}" class="nowrap">{{language.name}}</a></li>
                                             {%endfor%}
                                         </ul>
                                         

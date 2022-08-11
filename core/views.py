@@ -139,20 +139,16 @@ class Project_Image_Download(View):
             httpresponse['Content-Disposition'] = 'attachment; filename="'+projectimage.project.name+' Screenshot'+os.path.splitext(projectimage.image.file.name)[1]+'"'
             return httpresponse
 
-class EnquiriesView(TemplateView):
-    template_name='core/enquiries.html'
+# class EnquiriesView(TemplateView):
+#     template_name='core/enquiries.html'
+
+#     def get_context_data(self, **kwargs):
+#         context = super(EnquiriesView, self).get_context_data(**kwargs)
+#         return context
+class AboutMeView(TemplateView):
+    template_name='core/about_me.html'
 
     def get_context_data(self, **kwargs):
-        context = super(EnquiriesView, self).get_context_data(**kwargs)
+        context = super(AboutMeView, self).get_context_data(**kwargs)
         return context
-
-
-
-class TestView(TemplateView):
-    template_name='core/test.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(TestView, self).get_context_data(**kwargs)
-        return context
-
 

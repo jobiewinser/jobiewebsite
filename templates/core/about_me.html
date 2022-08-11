@@ -1,0 +1,85 @@
+{% extends 'core/base.html' %}
+{%load static%}
+{%block scripts%}
+    {{block.super}}
+    <script>
+        $(document).ready(function() {
+            
+        });
+
+    </script>
+{%endblock scripts%}
+
+{%block styles%}
+    {{block.super}}
+    <style>
+        h5{   
+            font-weight: bold;       
+        }
+        img{
+            max-width:250px;         
+        }
+    </style>
+{%endblock styles%}
+
+{% block about_me_active %}active{%endblock about_me_active%}
+
+{%block content%}
+    <div class="layout-margin-custom">
+        <div class="row">        
+            <div class="col-sm p-1" style="min-width:500px">
+                <div class="card main-card" style="margin-right:0px">
+                    <div class="card-header center">
+                        Professional Details
+                    </div>
+                    <div class="card-body row" style="">
+                        <div class="col-md-auto">
+                            <img src="{% static '/img/professional_profile.jpg' %}"/>
+                        </div>
+                        <div class="col">
+                            <h5>Graduation and first role</h5>
+                            <p>My name is Jobie Winser and I am a web developer working as the lead developer as Abingdon School. 
+                                I graduated from Cardiff University and immediately started looking for work during the height of the COVID-19 pandemic. 
+                                After interviewing with my current manager, Niki Dinsey, I secured a job in Abingdon, Oxfordship and relocated.</p>
+                            <h5>My next role</h5>
+                            <p>I am looking to move to a more demanding role which will challenge me and further develop my skills by around September 2022.
+                                In my current position I must give a 3 month notice before taking a new position, however this is likely negotiable (especially closer to Spertember 2022).
+                            </p>
+                            <p>My ideal role would be python based working either as a backend or full stack developer. I am, however, open to most development roles.  
+                                I find that my backend work is more effective than my UI design as my previous systems are mostly internal and focused on function over form.
+                            </p>
+                            <h5>Location</h5>
+                            <p>Finally, I am willing to work pretty much anywhere. Relocation is possible, although I'd prefer to have the option to work remotely for high living-cost areas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+            <div class="col-sm p-1" style="min-width:500px">
+                <div class="card main-card" style="margin-right:0px">
+                    <div class="card-header center">
+                        Personal Details
+                    </div>
+                    <div class="card-body row" style="">
+                        <div class="col-md-auto">
+                            <img src="{% static '/img/personal_profile.jpg' %}"/>
+                        </div>
+                        <div class="col">
+                            <h5>Me</h5>
+                            <p>I'm a high energy, and passionate individual, especially when something takes my interest and requires a new approach to solve. You'll find that i'm quiet when I'm stuck in a project but talkative when I have something to add to a conversation.</p>
+                            <p>I take pride in my ability to include anyone and everyone in discussion and value the varying life experiences others have when weighing in on a topic.</p>
+                            <h5>Hobbies - Powerlifting / Body Building</h5>
+                            <p>My mail non-professional goal for the last couple of years has been to deadlift 200kg and achieved this while weighing 83 kg.
+                                Once I had achieved this, I moved from powerlifting to body building and will spend approximately 9 hours a week in the gym.</p>
+                            <h5>Hobbies - Devops</h5>
+                            <p>A large amount of my time is spent tinkering with old server equipment and my proxmox machine. 
+                                There's always a project or a game server that needs hosting.</p>
+                            <h5>Hobbies - Video Games / Wargaming</h5>
+                            <p>I'm a huge fan of competitive games such as DOTA 2 along with slower paced games such as Dawn of War, Rimworld, Empire Earth, Starsector etc.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{%endblock content%}
