@@ -5,6 +5,7 @@
         {%block cdn%}
             
             <link rel="stylesheet" type="text/css"  href="{% static 'css/base.css' %}">
+            <link rel="stylesheet" type="text/css"  href="{% static 'css/main.css' %}">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
             <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>            
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -30,7 +31,8 @@
                 <a class="{% block career_nav_active %}{%endblock career_nav_active%}" href="/career">Career and Education</a>
                 <a class="{% block site_nav_active %}{%endblock site_nav_active%}" href="/site">This Site</a>
                 <a class="{% block enquiries_nav_active %}{%endblock enquiries_nav_active%}" href="/enquiries">Enquiries</a>
-                <a class="{% block iot_nav_active %}{%endblock iot_nav_active%}" href="/iot">Internet of things (WIP)</a>
+                {% comment %} <a class="{% block iot_nav_active %}{%endblock iot_nav_active%}" href="/iot">Internet of things (WIP)</a> {% endcomment %}
+                <a class="{% block test_active %}{%endblock test_active%}" href="/test">Test</a>
             </div>
         {%endblock navbar%}
         

@@ -61,17 +61,17 @@ LOGGING = {
 SECRET_KEY = os.getenv("SECRET_KEY")
 STATIC_URL = '/static/'
 # SECURITY WARNING: don't run with debug turned on in production!
-STATIC_ROOT = os.path.join(BASE_DIR, 'jobiewebsite/static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'jobiewebsite/staticfiles/')
 if os.getenv("SERVER") == "development":
     DEBUG = True
 else:
     DEBUG = False
 STATICFILES_DIRS = [
-    '/var/www/jobiewebsite/staticfiles/'
+    '/var/www/jobiewebsite/static/'
 ]
     
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'jobiewinser.ddns.net', 'www.django.com']
+ALLOWED_HOSTS = ['portfolio.jobiewinser.co.uk']
 
 
 # Application definition

@@ -25,7 +25,9 @@ urlpatterns = [
     path('career/', coreviews.CareerView.as_view(), name='career'),
     path('site/', coreviews.SiteView.as_view(), name='site'),
     path('enquiries/', coreviews.EnquiriesView.as_view(), name='enquiries'),
-    path('iot/', coreviews.IotView.as_view(), name='iot'),
-    path('energy-chart/', coreviews.energy_chart, name='energy-chart'),
+    # path('iot/', coreviews.IotView.as_view(), name='iot'),
+    # path('energy-chart/', coreviews.energy_chart, name='energy-chart'),
+
+    # path('test/', coreviews.test, name='test'),
 
 ]

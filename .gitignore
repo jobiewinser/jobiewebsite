@@ -129,10 +129,7 @@ dmypy.json
 .pyre/
 
 .vscode
-static/
-static/css
-static/css/base.css
-static/css/base.css
+staticfiles/**
 
 migrations
 
