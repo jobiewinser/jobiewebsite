@@ -13,6 +13,7 @@ from django.shortcuts import render
 from django.db.models import Sum
 from django.http import JsonResponse
 import logging
+from django.db.models import F  
 logger = logging.getLogger(__name__)
 
 
@@ -93,7 +94,7 @@ class ProjectListView(TemplateView):
     def get_context_data(self, **kwargs):
 
         context = super(ProjectListView, self).get_context_data(**kwargs)
-        context['projectlist'] = Project.objects.all().order_by('-start')
+        context['projectlist'] = Project.objects.all().order_by(F('end').desc(nulls_first=True))
         if 'technology_id' in kwargs:
             filter_technology = Technology.objects.filter(pk=kwargs['technology_id']).first()
             context['projectlist'] = context['projectlist'].filter(technology=filter_technology)
