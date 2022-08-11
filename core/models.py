@@ -37,8 +37,8 @@ class TechnologyType(models.Model):
 class Language(models.Model):
     name = models.CharField(null = True, max_length = 225, blank=True)
 
-    def __str__(self):
-        return self.name
+    # def __str__(self):
+    #     return self.name
 
 
 class Technology(models.Model):

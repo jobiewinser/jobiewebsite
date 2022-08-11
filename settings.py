@@ -64,14 +64,16 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'jobiewebsite/staticfiles/')
 if os.getenv("SERVER") == "development":
     DEBUG = True
+    ALLOWED_HOSTS = ['*']
 else:
     DEBUG = False
+    ALLOWED_HOSTS = ['portfolio.jobiewinser.co.uk']
 STATICFILES_DIRS = [
     '/var/www/jobiewebsite/static/'
 ]
     
 
-ALLOWED_HOSTS = ['portfolio.jobiewinser.co.uk']
+
 
 
 # Application definition
