@@ -37,15 +37,15 @@ class TechnologyType(models.Model):
 class Language(models.Model):
     name = models.CharField(null = True, max_length = 225, blank=True)
 
-    # def __str__(self):
-    #     return self.name
+    def __str__(self):
+        return self.name
 
 
 class Technology(models.Model):
     name = models.CharField(null = True, max_length = 225, blank=True)
-    type = models.ManyToManyField(TechnologyType, blank=True)
-    language = models.ManyToManyField(Language, blank=True)
-    image = models.FileField(null = True, upload_to='technology-images')
+    type = models.ManyToManyField(TechnologyType, null = True, blank=True)
+    language = models.ManyToManyField(Language, null = True, blank=True)
+    image = models.FileField(null = True, blank=True, upload_to='technology-images')
     priority = models.IntegerField(null = True, blank=True)
     htmldescription = models.CharField(null = True, max_length = 500, blank=True)
 
