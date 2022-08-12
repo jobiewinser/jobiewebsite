@@ -71,8 +71,9 @@ class Project(models.Model):
 class ProjectImage(models.Model):
     image = models.FileField(null = True, upload_to='technology-images')
     htmldescription = models.CharField(null = True, max_length = 5000, blank=True)
-    project = models.ForeignKey(Project, on_delete=SET_NULL, null=True)
+    project = models.ManyToManyField(Project, null=True, blank=True)
     priority = models.IntegerField(null = True, blank=True)
+    show_on_demo = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['priority']

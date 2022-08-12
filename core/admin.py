@@ -23,8 +23,8 @@ class LanguageAdmin(ImportExportModelAdmin):
 admin.site.register(Language, LanguageAdmin)
 
 class ProjectImageAdmin(ImportExportModelAdmin):
-    search_fields = ['pk', 'image', 'htmldescription', 'project', 'priority']
-    list_display = ['pk', 'image', 'htmldescription', 'project', 'priority']
+    search_fields = ['pk', 'image', 'htmldescription', 'priority']
+    list_display = ['pk', 'image', 'htmldescription', 'priority']
 admin.site.register(ProjectImage, ProjectImageAdmin)
 
 from django.apps import apps

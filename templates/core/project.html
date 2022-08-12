@@ -4,57 +4,35 @@
     {{block.super}}
     <script>
         $(document).ready(function() {
-            
-        });
-        document.addEventListener("DOMContentLoaded", function() {
-            var lazyloadImages;    
-
-            if ("IntersectionObserver" in window) {
-                lazyloadImages = document.querySelectorAll(".lazy");
-                var imageObserver = new IntersectionObserver(function(entries, observer) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                    var image = entry.target;
-                    image.src = image.dataset.src;
-                    image.classList.remove("lazy");
-                    imageObserver.unobserve(image);
-                    }
-                });
-                });
-
-                lazyloadImages.forEach(function(image) {
-                imageObserver.observe(image);
-                });
-            } else {  
-                var lazyloadThrottleTimeout;
-                lazyloadImages = document.querySelectorAll(".lazy");
-                
-                function lazyload () {
-                if(lazyloadThrottleTimeout) {
-                    clearTimeout(lazyloadThrottleTimeout);
-                }    
-
-                lazyloadThrottleTimeout = setTimeout(function() {
-                    var scrollTop = window.pageYOffset;
-                    lazyloadImages.forEach(function(img) {
-                        if(img.offsetTop < (window.innerHeight + scrollTop)) {
-                        img.src = img.dataset.src;
-                        img.classList.remove('lazy');
-                        }
-                    });
-                    if(lazyloadImages.length == 0) { 
-                    document.removeEventListener("scroll", lazyload);
-                    window.removeEventListener("resize", lazyload);
-                    window.removeEventListener("orientationChange", lazyload);
-                    }
-                }, 20);
+            $('img[data-enlargeable]').addClass('img-enlargeable').click(function() {
+                var src = $(this).attr('src');
+                var modal;
+              
+                function removeModal() {
+                  modal.remove();
+                  $('body').off('keyup.modal-close');
                 }
-
-                document.addEventListener("scroll", lazyload);
-                window.addEventListener("resize", lazyload);
-                window.addEventListener("orientationChange", lazyload);
-            }
-            })
+                modal = $('<div>').css({
+                  background: 'RGBA(0,0,0,.5) url(' + src + ') no-repeat center',
+                  backgroundSize: 'contain',
+                  width: '100%',
+                  height: '100%',
+                  position: 'fixed',
+                  zIndex: '10000',
+                  top: '0',
+                  left: '0',
+                  cursor: 'zoom-out'
+                }).click(function() {
+                  removeModal();
+                }).appendTo('body');
+                //handling ESC
+                $('body').on('keyup.modal-close', function(e) {
+                  if (e.key === 'Escape') {
+                    removeModal();
+                  }
+                });
+              });
+        });
 
     </script>
 {%endblock scripts%}
@@ -62,15 +40,6 @@
 {%block styles%}
     {{block.super}}
     <style>
-        .image-card {
-            margin:0px;
-            padding:0px;
-        }
-
-        .image-card-body {
-            margin:0px;
-            padding:0px;
-        }
 
         .image-modal-dialog {
             width: 100%;
@@ -101,13 +70,9 @@
         }
 
         .card-img-top{
-            height:auto;
-            width:100%;
-            min-width:720px
         }
 
         .projectimage {
-            min-height:500px
         }
 
         .container{
@@ -122,76 +87,61 @@
 {% block projects_nav_active %}active{%endblock projects_nav_active%}
 
 {%block content%}
-    <div class="modal fade" id="image-modal">
-        <div class="modal-dialog image-modal-dialog">
-            <div class="modal-content image-modal-content">
-                <div class="modal-body"> 
-                    <div style="text-align:center" class="row">
-                        <div class="col-2" >
-                        </div>
-                        <div class="col" >
-                            <form id="download-link" action="#">
-                                <input class="btn btn-primary" type="submit" value="Download Image" />
-                            </form>
-                        </div>
-                        <div class="col-2">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right:10px">
-                                <span style="font-size:calc((2vh+1vw))" aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col">
-                            <div class="container">
-                                <img id="image-modal-image" class="card-img-top" src="">
+    <div class="layout-margin-custom">
+        <div class="row">    
+            <div class="col">    
+                <div class="card main-card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col pl-0">
+                                Project - <span style="font-family:Roboto-Bold">{{project.name}}</span>                        
+                                {% if request.user.is_superuser %}
+                                    <a href="/admin/core/project/{{project.pk}}/change/" target="_blank" style="color:green" class="nowrap"> <i class="fas fa-edit"></i> Edit</a>
+                                {% endif %}
+                            </div>
+                            <div class="col" style="text-align:right">
+                                <a href="/projects">Back to Project List</a>
                             </div>
                         </div>
+                        
                     </div>
+                    <div class="card-body">
+                        {{project.htmldescription|safe}} 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        {%if project.projectimage_set.all%}
+        <div class="row">     
+            <div class="col">    
+                <div class="card main-card">
                     <div class="row">
-                        <div class="col">
-                        </div>
-                        <div class="col alert alert-light m-3" style="color:black" role="alert">
-                            <span id="image-modal-description"></span>
-                        </div>
-                        <div class="col">
-                        </div>
+                        {%for projectimage in project.projectimage_set.all%}
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                            <div class="bg-white rounded shadow-sm projectimage">
+                                <img src="/media/{{projectimage.image}}" id="projectimage-{{projectimage.pk}}"style="cursor: zoom-in" data-enlargeable alt="" class="img-fluid card-img-top">
+                              <div class="p-4">
+                                <p class="small text-muted mb-0">{{projectimage.htmldescription|safe}}</p>
+                                  <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i></p>
+                                  <a href="/project/image/{{projectimage.pk}}" class="badge badge-primary px-3 rounded-pill font-weight-normal">Download</a>
+                                  {% if request.user.is_superuser %}
+                                      <a href="/admin/core/projectimage/{{projectimage.pk}}/change/" target="_blank" class="badge badge-primary px-3 rounded-pill font-weight-normal">Edit</a>
+                                  {% endif %}
+                              </div>
+                            </div>
+                          </div>
+                        {%endfor%}
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="card main-card">
-        <div class="card-header">
-            <div class="row">
-                <div class="col">
-                    Project - <span style="font-family:Roboto-Bold">{{project.name}}</span>
-                </div>
-                <div class="col" style="text-align:right">
-                    <a href="/projects">Back to Project List</a>
-                </div>
+        {%else%}
+        <div class="row">     
+            <div class="col m-3">    
+                No Screenshots
             </div>
-            
         </div>
-        <div class="card-body">
-            {{project.htmldescription|safe}}
-        </div>
-    </div>
-    
-    <hr>
-
-    <div class="card main-card">
-        <div class="row">
-            {%for projectimage in project.projectimage_set.all%}
-                <div class="col-sm p-1 projectimage" id="projectimage-{{projectimage.pk}}" data-searchable="true">
-                    <div class="card image-card filter-card" style="">
-                        <div class="card-body image-card-body" style="min-width:400px">
-                            <img loading="lazy" type="button" onclick="$('#image-modal-image').prop('src', '/media/{{projectimage.image}}'); $('#download-link').prop('action', '/project/image/{{projectimage.pk}}'); $('#image-modal-description').html('{{projectimage.htmldescription|escapejs}}');" data-toggle="modal" data-target="#image-modal" class="card-img-top lazy" data-src="/media/{{projectimage.image}}">
-                        </div>
-                    </div>
-                </div>
-            {%endfor%}
-        </div>
+        {%endif%}
     </div>
 {%endblock content%}
