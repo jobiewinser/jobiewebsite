@@ -130,16 +130,29 @@
                                   {% endif %}
                               </div>
                             </div>
-                          </div>
+                        </div>
                         {%endfor%}
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                            <div class="bg-white rounded shadow-sm projectimage">
+                                <h5 class="filter-card-title searchable-text"><a href="/admin/core/projectimage/add/" target="_blank" style="color:green"><i class="fas fa-plus-circle"></i> Add</a></h5>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         {%else%}
         <div class="row">     
-            <div class="col m-3">    
-                No Screenshots
+            <div class="col">    
+                <div class="card main-card">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                            <div class="bg-white rounded shadow-sm projectimage">
+                                <h5 class="filter-card-title searchable-text"><a href="/admin/core/projectimage/add/" target="_blank" style="color:green"><i class="fas fa-plus-circle"></i> Add</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         {%endif%}
