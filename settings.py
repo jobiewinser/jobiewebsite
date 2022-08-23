@@ -95,10 +95,10 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -220,17 +220,8 @@ CORS_REPLACE_HTTPS_REFERER = True
 CORS_ORIGIN_WHITELIST = (
     'http://react.jobiewinser.co.uk'
 )
-custom_headers = (
-    "accept",
-    "accept-encoding",
-    "authorization",
-    "content-type",
-    "dnt",
-    "origin",
-    "user-agent",
-    "x-csrftoken",
-    "x-requested-with",
-    "Access-Control-Allow-Origin",
-)
 
-CORS_ALLOW_HEADERS = custom_headers
+
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    "Access-Control-Allow-Origin",
+]
