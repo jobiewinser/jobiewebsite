@@ -14,6 +14,7 @@ from pathlib import Path
 import os 
 from dotenv import load_dotenv
 from pathlib import Path  # python3 only
+from corsheaders.defaults import default_headers
 
 env_path = Path('/var/www/jobiewebsite/.env')
 load_dotenv(dotenv_path=env_path)
@@ -79,6 +80,7 @@ STATICFILES_DIRS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -207,3 +209,13 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.TemplateHTMLRenderer', #DO NOT REMOVE, VIEWFLOW NEEDS THIS???
     )
 }
+CORS_ALLOWED_ORIGINS = [
+    'http://react.jobiewinser.co.uk',
+]
+CSRF_TRUSTED_ORIGINS = ['http://react.jobiewinser.co.uk']
+
+CORS_REPLACE_HTTPS_REFERER = True
+CORS_ORIGIN_WHITELIST = (
+    'http://react.jobiewinser.co.uk'
+)
+CORS_ALLOW_HEADERS = default_headers
