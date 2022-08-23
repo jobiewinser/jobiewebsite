@@ -210,6 +210,7 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.TemplateHTMLRenderer', #DO NOT REMOVE, VIEWFLOW NEEDS THIS???
     )
 }
+
 CORS_ALLOWED_ORIGINS = [
     'http://react.jobiewinser.co.uk',
 ]
@@ -219,4 +220,17 @@ CORS_REPLACE_HTTPS_REFERER = True
 CORS_ORIGIN_WHITELIST = (
     'http://react.jobiewinser.co.uk'
 )
-CORS_ALLOW_HEADERS = default_headers + ('Access-Control-Allow-Origin',)
+custom_headers = (
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+    "Access-Control-Allow-Origin",
+)
+
+CORS_ALLOW_HEADERS = custom_headers
