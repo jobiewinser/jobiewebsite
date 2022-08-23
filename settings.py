@@ -219,4 +219,4 @@ CORS_REPLACE_HTTPS_REFERER = True
 CORS_ORIGIN_WHITELIST = (
     'http://react.jobiewinser.co.uk'
 )
-CORS_ALLOW_HEADERS = default_headers
+CORS_ALLOW_HEADERS = default_headers + ('Access-Control-Allow-Origin',)
