@@ -46,7 +46,7 @@ class Technology(models.Model):
     type = models.ManyToManyField(TechnologyType, null = True, blank=True)
     language = models.ManyToManyField(Language, null = True, blank=True)
     image = models.FileField(null = True, blank=True, upload_to='technology-images')
-    priority = models.IntegerField(null = True, blank=True)
+    priority = models.IntegerField(default=100)
     htmldescription = models.CharField(null = True, max_length = 500, blank=True)
 
     def __str__(self):
@@ -72,7 +72,7 @@ class ProjectImage(models.Model):
     image = models.FileField(null = True, upload_to='technology-images')
     htmldescription = models.CharField(null = True, max_length = 5000, blank=True)
     project = models.ManyToManyField(Project, null=True, blank=True)
-    priority = models.IntegerField(null = True, blank=True)
+    priority = models.IntegerField(default=100)
     show_on_demo = models.BooleanField(default=False)
 
     class Meta:

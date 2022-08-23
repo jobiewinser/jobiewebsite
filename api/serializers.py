@@ -23,7 +23,7 @@ class CustomBaseSerializer(serializers.ModelSerializer):
     def get_admin_url(self, obj):     
         admin_url_name = "admin:{}_{}_change".format(obj._meta.app_label, obj._meta.model_name)        
         root_admin_url = reverse(admin_url_name, args=(obj.pk,))            
-        return os.getenv("MA_SITE_URL")+root_admin_url
+        return os.getenv("SITE_URL")+root_admin_url
 
 class UserPublicSerializer(CustomBaseSerializer):
     username = serializers.CharField(read_only=True)
@@ -36,16 +36,43 @@ class UserPublicSerializer(CustomBaseSerializer):
             'admin_url',
         ]
             
+
+class TechnologyTypeSerializer(CustomBaseSerializer):
+    class Meta:
+        model = TechnologyType
+        fields = [
+            'pk',
+            'name',
+        ]
+            
+
+class LanguageSerializer(CustomBaseSerializer):
+    class Meta:
+        model = Language
+        fields = [
+            'pk',
+            'name',
+        ]
+            
             
 class TechnologySerializer(CustomBaseSerializer):
     url = serializers.HyperlinkedIdentityField(
         view_name=f'technology-detail', 
         lookup_field='pk'
     )
+    type = TechnologyTypeSerializer(read_only=True, many=True)
+    language = LanguageSerializer(read_only=True, many=True)
+    
     class Meta:
         model = Technology
         fields = [
             'pk',
             'url',
             'admin_url',
+            'name',
+            'type',
+            'language',
+            'image',
+            'priority',
+            'htmldescription',
         ]
