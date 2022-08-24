@@ -37,7 +37,7 @@ body {
     width: 34px;
   }
   .card{
-    margin:5px
+    margin-bottom:5px;
   }
 
   .square:focus {

@@ -12,12 +12,12 @@ import Col from 'react-bootstrap/Col';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
     
 function renderTechnologyProjects(props) {
-  console.log(props)
-  // const technologies = [];
-  // for (let i = 0; i < this.state.technologies.length; i++) {
-  //   technologies.push(this.renderTechnologyPanel(i));
-  // }
-  // return technologies
+  const projects = [];
+  for (const project of props.value.projects) {
+    projects.push(<li>{project.name}</li>);
+  }
+  console.log(projects)
+  return projects
 }
 function TopNav() {
   return (

@@ -46,6 +46,15 @@ class TechnologyTypeSerializer(CustomBaseSerializer):
         ]
             
 
+class ProjectSerializer(CustomBaseSerializer):
+    class Meta:
+        model = Project
+        fields = [
+            'pk',
+            'name',
+        ]
+            
+
 class LanguageSerializer(CustomBaseSerializer):
     class Meta:
         model = Language
@@ -62,6 +71,7 @@ class TechnologySerializer(CustomBaseSerializer):
     )
     type = TechnologyTypeSerializer(read_only=True, many=True)
     language = LanguageSerializer(read_only=True, many=True)
+    projects = serializers.SerializerMethodField()
     
     class Meta:
         model = Technology
@@ -75,4 +85,10 @@ class TechnologySerializer(CustomBaseSerializer):
             'image',
             'priority',
             'htmldescription',
+            'projects',
         ]
+
+    def get_projects(self, obj):
+       products = obj.project_set.all() # will return product query set associate with this category
+       response = ProjectSerializer(products, many=True).data
+       return response
