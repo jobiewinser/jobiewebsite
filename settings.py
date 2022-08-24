@@ -68,7 +68,7 @@ if os.getenv("SERVER") == "development":
     ALLOWED_HOSTS = ['*']
 else:
     DEBUG = False
-    ALLOWED_HOSTS = ['portfolio.jobiewinser.co.uk','react.jobiewinser.co.uk']
+    ALLOWED_HOSTS = ['portfolio.jobiewinser.co.uk']
 STATICFILES_DIRS = [
     '/var/www/jobiewebsite/static/'
 ]
