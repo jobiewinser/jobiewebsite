@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import Container from 'react-bootstrap/Container';
@@ -13,13 +13,14 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
     
 function renderTechnologyProjects(props) {
   const projects = [];
-  for (const project of props.value.projects) {
-    projects.push(<li>{project.name}</li>);
+  for (const [index, project] of props.value.projects.entries()) {
+    projects.push(<li key={index}>{project.name}</li>);
   }
-  console.log(projects)
   return projects
 }
 function TopNav() {
+  const [state, setState] = useState(0);
+  
   return (
     <Navbar fixed="top" bg="light" expand="lg">
     <Container fluid>
@@ -47,23 +48,23 @@ function Square(props) {
   );
 }
 function TechnologyPanel(props) {
-    return (
-      <Col>
-        <Card style={{ width: '18rem' }} className="card">
-          <Card.Img variant="top" src={props.value.image} />
-          <Card.Body>
-            <Card.Title>{props.value.name}</Card.Title>
-            <Card.Text>
-              Projects:
-            </Card.Text>
-            <ul>
-              {renderTechnologyProjects(props)}
-            </ul>
-            <Button variant="primary">Go somewhere</Button>
-          </Card.Body>
-        </Card>
-      </Col>
-    );
+  return (
+    <Col>
+      <Card style={{ width: '18rem' }} className="card">
+        <Card.Img variant="top" src={props.value.image} />
+        <Card.Body>
+          <Card.Title>{props.value.name}</Card.Title>
+          <Card.Text>
+            Latest Projects:
+          </Card.Text>
+          <ul>
+            {renderTechnologyProjects(props)}
+          </ul>
+          <Button variant="primary">Go somewhere</Button>
+        </Card.Body>
+      </Card>
+    </Col>
+  );
 }
   
 class TechnologyPage extends React.Component {
@@ -76,7 +77,7 @@ class TechnologyPage extends React.Component {
       };
     }
     componentDidMount() {
-      fetch("http://portfolio.jobiewinser.co.uk/api/technology/")
+      fetch("http://api.portfolio.jobiewinser.co.uk/api/technology/")
         .then(res => res.json())
         .then(
           (result) => {
@@ -119,7 +120,7 @@ class TechnologyPage extends React.Component {
     }
     renderTechnologyPanel(i) {
       let technology = this.state.technologies[i];
-      if (technology != null){
+      if (technology != null && i != null){
         return (
             <TechnologyPanel
               value={this.state.technologies[i]}

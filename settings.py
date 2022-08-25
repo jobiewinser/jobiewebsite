@@ -60,17 +60,17 @@ LOGGING = {
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
-STATIC_URL = '/oldstatic/'
+STATIC_URL = '/static/'
 # SECURITY WARNING: don't run with debug turned on in production!
-STATIC_ROOT = os.path.join(BASE_DIR, 'jobiewebsite/staticfiles/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'jobiewebsite/static/')
 if os.getenv("SERVER") == "development":
     DEBUG = True
     ALLOWED_HOSTS = ['*']
 else:
     DEBUG = False
-    ALLOWED_HOSTS = ['portfolio.jobiewinser.co.uk']
+    ALLOWED_HOSTS = ["api.portfolio.jobiewinser.co.uk"]
 STATICFILES_DIRS = [
-    '/var/www/jobiewebsite/static/'
+    '/var/www/jobiewebsite/staticfiles/'
 ]
     
 
@@ -201,7 +201,8 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": auth_classes,
     
     "DEFAULT_PERMISSION_CLASSES": [
-        # "rest_framework.permissions.IsAuthenticatedOrReadOnly"
+        # "rest_framework.permissions.IsAuthenticatedOrReadOnly",
+        "rest_framework.permissions.AllowAny"
     ],
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
     "PAGE_SIZE": 25,
@@ -212,15 +213,11 @@ REST_FRAMEWORK = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    'http://react.jobiewinser.co.uk',
+    'http://portfolio.jobiewinser.co.uk',
 ]
-CSRF_TRUSTED_ORIGINS = ['http://react.jobiewinser.co.uk']
+CSRF_TRUSTED_ORIGINS = ['http://portfolio.jobiewinser.co.uk']
 
 CORS_REPLACE_HTTPS_REFERER = True
-CORS_ORIGIN_WHITELIST = (
-    'http://react.jobiewinser.co.uk'
-)
-
 
 CORS_ALLOW_HEADERS = list(default_headers) + [
     "Access-Control-Allow-Origin",
