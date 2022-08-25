@@ -60,7 +60,7 @@ LOGGING = {
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
-STATIC_URL = '/static/'
+STATIC_URL = '/oldstatic/'
 # SECURITY WARNING: don't run with debug turned on in production!
 STATIC_ROOT = os.path.join(BASE_DIR, 'jobiewebsite/staticfiles/')
 if os.getenv("SERVER") == "development":
