@@ -1,0 +1,21 @@
+<span>
+    <div class="row">
+        <div class="col">
+        </div>
+        {%for user in staff_users%}
+        <div class="col-md-auto user-select p-4 {%if user == request.user%}current-user-highlight{%endif%}"
+            hx-post="{% url 'switch-user' %}" hx-include="#user-select-{{user.pk}}" hx-target="#profile-dropdown">
+            <input type="text" style="display:None" id="user-select-{{user.pk}}" name="user_pk" value="{{user.pk}}"/>
+            <img src="/media/{{user.profile.avatar}}" width="80" height="80" class="rounded-circle">
+            <br>            
+            <br>            
+            <h4>{{user.profile}}</h4>
+        </div>
+        {%endfor%}
+        <div class="col">
+        </div>
+    </div>
+</span>
+<span hx-swap-oob="true" id="generic_modal_title">
+    Switch User
+</span>

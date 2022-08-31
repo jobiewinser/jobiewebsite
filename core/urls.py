@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.urls import path
 import core.views as coreviews
+import core.htmx as htmxviews
+
 urlpatterns = [
     path('', coreviews.HomeView.as_view(), name='home'),
     path('project/<int:project_id>', coreviews.ProjectView.as_view(), name='project'),
@@ -25,7 +27,8 @@ urlpatterns = [
     path('career/', coreviews.CareerView.as_view(), name='career'),
     path('site/', coreviews.SiteView.as_view(), name='site'),
     path('results/', coreviews.ResultsView.as_view(), name='results'),
-    
+    path('get-modal-content/', htmxviews.get_modal_content, name='get-modal-content' ),
+    path('switch-user/', htmxviews.switch_user, name='switch-user' ),
     path('about_me/', coreviews.AboutMeView.as_view(), name='about_me'),
     path('webhooks/', coreviews.Webhooks.as_view(), name='webhooks'),
     # path('enquiries/', coreviews.EnquiriesView.as_view(), name='enquiries'),

@@ -1,12 +1,11 @@
 {% extends 'core/base.html' %}
-
+{%load static%}
 {%block scripts%}
     {{block.super}}
     <script>
         $(document).ready(function() {
             $('#results_table').DataTable({
             });
-            $("[data-bs-toggle=popover]").popover();
         });
 
     </script>
@@ -18,10 +17,27 @@
         .badge > * {
             vertical-align:middle;
         }
+        .user-select {
+            text-align:center;
+            cursor: pointer;
+        }
+        .current-user-highlight {
+            background-color: rgba(25, 135, 84, 0.3) !important;
+            border: rgba(25, 135, 84, 0.8) !important;
+        }
     </style>
 {%endblock styles%}
 
-{% block results_nav_active %}active{%endblock results_nav_active%}
+
+
+{%block navbar%}
+<div class="topnav">
+    <a href="#">Results Health Club</a>
+    <a class="active" href="#">Academy Leads</a>
+    {% comment %} <a class="{% block enquiries_nav_active %}{%endblock enquiries_nav_active%}" href="/enquiries">Enquiries</a> {% endcomment %}
+    {% comment %} <a class="{% block iot_nav_active %}{%endblock iot_nav_active%}" href="/iot">Internet of things (WIP)</a> {% endcomment %}
+</div>
+{%endblock navbar%}
 
 {%block content%}
     <div class="layout-margin-custom p-1">
@@ -32,20 +48,12 @@
                 </select>
             </div>
             <div class="col-md-auto">
-                <button class="btn btn-success">Whatsapp Templates</button>
+                <button class="btn btn-success"><i class="fa fa-whatsapp" aria-hidden="true"></i> Whatsapp Templates</button>
             </div>
             <div class="col">                
             </div>
             <div class="col-md-auto">
-                <div class="dropdown">
-                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span style="font-size:10px">Logged in as Eleanor Thorpe</b>
-                        <img src="{% static 'img/eleanor-profile.jpg' %}" width="30" height="30" class="rounded-circle">
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><a class="dropdown-item" href="#">Switch User</a></li>
-                    </ul>
-                  </div>
+                {%include 'results/profile_dropdown.html'%}
             </div>
         </div>
         <div class="row m-3">
@@ -57,7 +65,7 @@
                                 Name
                             </th>
                             <th>
-                                DoB
+                                Lead Date
                             </th>
                             <th>
                                 Ad Campaign
@@ -91,13 +99,13 @@
                                 Jobie Winser
                             </td>
                             <td>
-                                14/06/1998 (24 Years)
+                                25/08/2022 <i>(7 days ago)</i>
                             </td>
                             <td>
-                                Men's Instagram Ad Spring
+                                Live Well Male
                             </td>
                             <td>
-                                <a target="_blank" href="https://wa.me/07872000364?text=I'm%20Eleanor">07872000364</a>
+                                <a style="text-decoration: none;" target="_blank" href="whatsapp://send?phone=07872000364&text=Hi Jobie"><i class="fa fa-whatsapp" aria-hidden="true"></i> 07872000364</a>
                             </td>
                             <td>
                                 12/06/22 3:15 PM - Phone
@@ -126,13 +134,13 @@
                                 Eleanor Thorpe
                             </td>
                             <td>
-                                17/06/1996 (26 Years)
+                                22/08/2022 <i>(10 days ago)</i>
                             </td>
                             <td>
-                                Women's Instagram Ad Spring
+                                Live Well Female
                             </td>
                             <td>
-                                <a target="_blank" href="https://wa.me/07827777940?text=I'm%20Eleanor">07827777940</a>
+                                <a style="text-decoration: none;" target="_blank" href="whatsapp://send?phone=447827777940&text=Hi Eleanor"><i class="fa fa-whatsapp" aria-hidden="true"></i> 07827777940</a>
                             </td>
                             <td>
                                 14/07/22 3:15 PM - In Person
@@ -155,7 +163,7 @@
                                     data-bs-toggle="popover" 
                                     data-bs-trigger="hover" 
                                     title=""
-                                    data-bs-content="Pause this message for some time"></i>
+                                    data-bs-content="Pause this message for a while"></i>
                                 </span>
                                 15-09-2022
                             </td>
@@ -167,14 +175,14 @@
                             <td>
                                 Scout Winser
                             </td>
-                            <td>                                
-                                21/06/2000 (22 Years)
+                            <td>
+                                26/08/2022 <i>(6 days ago)</i>
                             </td>
                             <td>
-                                Women's Instagram Ad Summer
+                                Live Well Male
                             </td>
                             <td>
-                                <a target="_blank" href="https://wa.me/09876543214?text=I'm%20Eleanor">09876543214</a>
+                                <a style="text-decoration: none;" target="_blank" href="whatsapp://send?phone=09876543214&text=Hi Scout"><i class="fa fa-whatsapp" aria-hidden="true"></i> 09876543214</a>
                             </td>
                             <td>
                                 
@@ -197,7 +205,7 @@
                                         data-bs-toggle="popover" 
                                         data-bs-trigger="hover" 
                                         title=""
-                                        data-bs-content="Pause this message for some time"></i>
+                                        data-bs-content="Pause this message for a while"></i>
                                     </span>
                                 15-09-2022
                             </td>
@@ -210,13 +218,13 @@
                                 Mark Benden
                             </td>
                             <td>
-                                04/03/1988 (34 Years)
+                                31/08/2022 <i>(1 day ago)</i>
                             </td>
                             <td>
-                                Men's Instagram Ad Winter
+                                Live Well Female
                             </td>
                             <td>
-                                <a target="_blank" href="https://wa.me/09876543214?text=I'm%20Eleanor">09876543214</a>
+                                <a style="text-decoration: none;" target="_blank" href="whatsapp://send?phone=09876543214&text=Hi Mark"><i class="fa fa-whatsapp" aria-hidden="true"></i> 09876543214</a>
                             </td>
                             <td>
                                 
@@ -239,7 +247,7 @@
                                     data-bs-toggle="popover" 
                                     data-bs-trigger="hover" 
                                     title=""
-                                    data-bs-content="Pause this message for some time"></i>
+                                    data-bs-content="Pause this message for a while"></i>
                                 </span>
                                 07-09-2022
                             </td>

@@ -214,7 +214,7 @@ REST_FRAMEWORK = {
 
 CORS_ALLOWED_ORIGINS = [
     'http://portfolio.jobiewinser.co.uk',
-    '82.37.38.164'
+    # '82.37.38.164'
 ]
 CSRF_TRUSTED_ORIGINS = ['http://portfolio.jobiewinser.co.uk']
 
