@@ -68,7 +68,7 @@ if os.getenv("SERVER") == "development":
     ALLOWED_HOSTS = ['*']
 else:
     DEBUG = False
-    ALLOWED_HOSTS = ["api.portfolio.jobiewinser.co.uk"]
+    ALLOWED_HOSTS = ["apiportfolio.jobiewinser.co.uk", "portfolio.jobiewinser.co.uk"]
 STATICFILES_DIRS = [
     '/var/www/jobiewebsite/staticfiles/'
 ]
@@ -214,6 +214,7 @@ REST_FRAMEWORK = {
 
 CORS_ALLOWED_ORIGINS = [
     'http://portfolio.jobiewinser.co.uk',
+    '82.37.38.164'
 ]
 CSRF_TRUSTED_ORIGINS = ['http://portfolio.jobiewinser.co.uk']
 
@@ -222,3 +223,11 @@ CORS_REPLACE_HTTPS_REFERER = True
 CORS_ALLOW_HEADERS = list(default_headers) + [
     "Access-Control-Allow-Origin",
 ]
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'jobiewinser@gmail.com'
+EMAIL_HOST_PASSWORD = 'zcosfvgjmblebclj'

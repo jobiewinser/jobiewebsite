@@ -130,6 +130,12 @@ class SiteView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(SiteView, self).get_context_data(**kwargs)
         return context
+class ResultsView(TemplateView):
+    template_name='core/results.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ResultsView, self).get_context_data(**kwargs)
+        return context
 
 class Project_Image_Download(View):
     def get(self, request, **kwargs):
@@ -151,4 +157,32 @@ class AboutMeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(AboutMeView, self).get_context_data(**kwargs)
         return context
+
+from django.core.mail import send_mail
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+import json
+@method_decorator(csrf_exempt, name="dispatch")
+class Webhooks(View):
+    def get(self, request, *args, **kwargs):
+        send_mail(
+            'Webhook',
+            f"{str(request)}",
+            'jobiewinser@localhost',
+            ['jobiewinser@live.co.uk'],
+            fail_silently=False,
+        )
+        return HttpResponse(f"EVENT_RECEIVED",status_code=200)
+
+    def post(self, request, *args, **kwargs):
+        temp_string = f"POST {request.build_absolute_uri()}<br>"
+        for k,v in json.loads(request.body).items():
+            temp_string = temp_string + f"{k}: {v} <br>"
+        print(temp_string)
+        logger.debug("temp_string "+str(temp_string))
+        challenge = json.loads(request.body).get('hub.challenge',{})
+        response = HttpResponse(challenge)
+        response.status_code = 200
+        return response
+
 

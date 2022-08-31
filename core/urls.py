@@ -24,7 +24,10 @@ urlpatterns = [
     path('project/image/<int:projectimage_id>', coreviews.Project_Image_Download.as_view(), name='project-image-download'),
     path('career/', coreviews.CareerView.as_view(), name='career'),
     path('site/', coreviews.SiteView.as_view(), name='site'),
+    path('results/', coreviews.ResultsView.as_view(), name='results'),
+    
     path('about_me/', coreviews.AboutMeView.as_view(), name='about_me'),
+    path('webhooks/', coreviews.Webhooks.as_view(), name='webhooks'),
     # path('enquiries/', coreviews.EnquiriesView.as_view(), name='enquiries'),
     # path('iot/', coreviews.IotView.as_view(), name='iot'),
     # path('energy-chart/', coreviews.energy_chart, name='energy-chart'),

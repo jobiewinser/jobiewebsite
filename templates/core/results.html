@@ -1,0 +1,256 @@
+{% extends 'core/base.html' %}
+
+{%block scripts%}
+    {{block.super}}
+    <script>
+        $(document).ready(function() {
+            $('#results_table').DataTable({
+            });
+            $("[data-bs-toggle=popover]").popover();
+        });
+
+    </script>
+{%endblock scripts%}
+
+{%block styles%}
+    {{block.super}}
+    <style>
+        .badge > * {
+            vertical-align:middle;
+        }
+    </style>
+{%endblock styles%}
+
+{% block results_nav_active %}active{%endblock results_nav_active%}
+
+{%block content%}
+    <div class="layout-margin-custom p-1">
+        <div class="row">
+            <div class="col-md-auto">
+                <select class="form-select">
+                    <option>Results Health Club - Abingdon</option>
+                </select>
+            </div>
+            <div class="col-md-auto">
+                <button class="btn btn-success">Whatsapp Templates</button>
+            </div>
+            <div class="col">                
+            </div>
+            <div class="col-md-auto">
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span style="font-size:10px">Logged in as Eleanor Thorpe</b>
+                        <img src="{% static 'img/eleanor-profile.jpg' %}" width="30" height="30" class="rounded-circle">
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li><a class="dropdown-item" href="#">Switch User</a></li>
+                    </ul>
+                  </div>
+            </div>
+        </div>
+        <div class="row m-3">
+            <div class="col">
+                <table id="results_table" class="table"> 
+                    <thead> 
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                DoB
+                            </th>
+                            <th>
+                                Ad Campaign
+                            </th>
+                            <th>
+                                Whatsapp
+                            </th>
+                            <th>
+                                Date/Time Booked
+                            </th>
+                            <th>
+                                Arrived
+                            </th>
+                            <th>
+                                Sold
+                            </th>
+                            <th>
+                                Last Communication & History
+                            </th>
+                            <th>
+                                Next Automatic Whatsapp
+                            </th>
+                            <th>
+                                Extra
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody> 
+                        <tr>
+                            <td>
+                                Jobie Winser
+                            </td>
+                            <td>
+                                14/06/1998 (24 Years)
+                            </td>
+                            <td>
+                                Men's Instagram Ad Spring
+                            </td>
+                            <td>
+                                <a target="_blank" href="https://wa.me/07872000364?text=I'm%20Eleanor">07872000364</a>
+                            </td>
+                            <td>
+                                12/06/22 3:15 PM - Phone
+                            </td>
+                            <td>
+                                <input type="checkbox" indeterminate="True"/>
+                            </td>
+                            <td>
+                                <input type="checkbox" indeterminate="True"/>
+                            </td>
+                            <td>
+                                <span class="badge bg-primary">
+                                    <i class="fa-regular fa-clock-rotate-left" ></i> History
+                                </span>
+                                15-09-2022 - Phone
+                            </td>
+                            <td>
+                                
+                            </td>
+                            <td>
+                                <button class="btn btn-sm btn-success">Done</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Eleanor Thorpe
+                            </td>
+                            <td>
+                                17/06/1996 (26 Years)
+                            </td>
+                            <td>
+                                Women's Instagram Ad Spring
+                            </td>
+                            <td>
+                                <a target="_blank" href="https://wa.me/07827777940?text=I'm%20Eleanor">07827777940</a>
+                            </td>
+                            <td>
+                                14/07/22 3:15 PM - In Person
+                            </td>
+                            <td>
+                                <input type="checkbox" indeterminate="True"/>
+                            </td>
+                            <td>
+                                <input type="checkbox" indeterminate="True"/>
+                            </td>
+                            <td>
+                                <span class="badge bg-primary">
+                                    <i class="fa-regular fa-clock-rotate-left" ></i> History
+                                </span>
+                                15-09-2022 - Whatsapp
+                            </td>
+                            <td>
+                                <span class="badge bg-secondary">
+                                <i class="fa-regular fa-pause" 
+                                    data-bs-toggle="popover" 
+                                    data-bs-trigger="hover" 
+                                    title=""
+                                    data-bs-content="Pause this message for some time"></i>
+                                </span>
+                                15-09-2022
+                            </td>
+                            <td>
+                                <button class="btn btn-sm btn-success">Done</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Scout Winser
+                            </td>
+                            <td>                                
+                                21/06/2000 (22 Years)
+                            </td>
+                            <td>
+                                Women's Instagram Ad Summer
+                            </td>
+                            <td>
+                                <a target="_blank" href="https://wa.me/09876543214?text=I'm%20Eleanor">09876543214</a>
+                            </td>
+                            <td>
+                                
+                            </td>
+                            <td>
+                                <input type="checkbox" indeterminate="True"/>
+                            </td>
+                            <td>
+                                <input type="checkbox" indeterminate="True"/>
+                            </td>
+                            <td>
+                                <span class="badge bg-primary">
+                                    <i class="fa-regular fa-clock-rotate-left" ></i> History
+                                </span>
+                                15-09-2022 - In Person
+                            </td>
+                            <td>                                
+                                <span class="badge bg-secondary">
+                                    <i class="fa-regular fa-pause" 
+                                        data-bs-toggle="popover" 
+                                        data-bs-trigger="hover" 
+                                        title=""
+                                        data-bs-content="Pause this message for some time"></i>
+                                    </span>
+                                15-09-2022
+                            </td>
+                            <td>
+                                <button class="btn btn-sm btn-success">Done</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Mark Benden
+                            </td>
+                            <td>
+                                04/03/1988 (34 Years)
+                            </td>
+                            <td>
+                                Men's Instagram Ad Winter
+                            </td>
+                            <td>
+                                <a target="_blank" href="https://wa.me/09876543214?text=I'm%20Eleanor">09876543214</a>
+                            </td>
+                            <td>
+                                
+                            </td>
+                            <td>
+                                <input type="checkbox" indeterminate="True"/>
+                            </td>
+                            <td>
+                                <input type="checkbox" indeterminate="True"/>
+                            </td>
+                            <td>
+                                <span class="badge bg-primary">
+                                    <i class="fa-regular fa-clock-rotate-left" ></i> History
+                                </span>
+                                07-09-2022 - Whatsapp
+                            </td>
+                            <td>
+                                <span class="badge bg-secondary">
+                                <i class="fa-regular fa-pause" 
+                                    data-bs-toggle="popover" 
+                                    data-bs-trigger="hover" 
+                                    title=""
+                                    data-bs-content="Pause this message for some time"></i>
+                                </span>
+                                07-09-2022
+                            </td>
+                            <td>
+                                <button class="btn btn-sm btn-success">Done</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+{%endblock content%}

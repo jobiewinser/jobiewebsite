@@ -1,10 +1,4 @@
 import React, { useState } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Routes 
-} from "react-router-dom";
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import Container from 'react-bootstrap/Container';
@@ -24,6 +18,28 @@ function renderTechnologyProjects(props) {
   }
   return projects
 }
+// function TopNav() {
+//   const [state, setState] = useState(0);
+  
+//   return (
+//     <Navbar fixed="top" bg="light" expand="lg">
+//     <Container fluid>
+//         <Navbar.Brand href="#home">Jobie Winser</Navbar.Brand>
+//         <Navbar.Toggle aria-controls="basic-navbar-nav" />
+//         <Navbar.Collapse id="basic-navbar-nav">
+//           <Nav className="me-auto">
+//             <Nav.Link href="#about_me">About Me</Nav.Link>
+//             <Nav.Link href="#">Technologies</Nav.Link>
+//             <Nav.Link href="#projects">Projects</Nav.Link>
+//             <Nav.Link href="#career">Career and Education</Nav.Link>
+//             <Nav.Link href="#site">This Site</Nav.Link>
+//           </Nav>
+//         </Navbar.Collapse>
+//       </Container>
+//     </Navbar>
+//   );
+// }
+
 function Square(props) {
   return (
     <button className="square" onClick={props.onClick}>
@@ -88,6 +104,12 @@ class TechnologyPage extends React.Component {
       console.log(i)
     }
    
+    // renderTopNav() {
+    //     return (
+    //         <TopNav/>
+    //     );
+    // }
+   
     renderSquare(i) {
         return (
             <Square
@@ -120,6 +142,9 @@ class TechnologyPage extends React.Component {
     render() {
         return (
           <div>
+            {/* <div>
+                  {this.renderTopNav()}
+            </div> */}
               <Row className="technology-div">
                 {this.renderTechnologyDiv()}                
               </Row>
@@ -128,30 +153,20 @@ class TechnologyPage extends React.Component {
     }
 }
   
-export default function App() {
-  return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/technologies">Technologies</Link>
-            </li>
-          </ul>
-        </nav>
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Routes>
-          <Route path='/technologies' element={<TechnologyPage/>} />
-        </Routes>
-      </div>
-    </Router>
-  );
+class Technologies extends React.Component {
+    render() {
+      return (
+        <div className="technologies">
+          <div className="technology-board">
+            <TechnologyPage />
+          </div>
+        </div>
+      );
+    }
 }
   
 // ========================================
   
-// const root = ReactDOM.createRoot(document.getElementById("root"));
-// root.render(<Game />);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Game />);
   
