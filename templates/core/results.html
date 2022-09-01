@@ -31,6 +31,11 @@
         #booking-type:checked ~ #booking-type-span-one {
             color:green
         }
+        .badge {
+            text-shadow: none;
+            font-size: .9em;
+            font-weight: 400;
+        }
     </style>
 {%endblock styles%}
 
@@ -127,7 +132,7 @@
                                 Live Well Male
                             </td>
                             <td class="nowrap">
-                                <a style="text-decoration: none;" target="_blank" href="whatsapp://send?phone=07872000364&text=Hi Jobie"><i class="fa fa-whatsapp" aria-hidden="true"></i> 07872000364</a>
+                                <a style="text-decoration: none;" target="_blank" href="whatsapp://send?phone=447827777940&text=Hi Jobie, I'm using Eleanor's number as a demo"><i class="fa fa-whatsapp" aria-hidden="true"></i> 07872000364</a>
                             </td>
                             <td>
                                 <button class="btn btn-sm btn-primary"
@@ -177,17 +182,25 @@
                                 15-09-2022 - Phone
                             </td>
                             <td class="nowrap">
-                                <button class="btn btn-sm btn-warning"
-                                    data-bs-toggle="popover" 
-                                    data-bs-trigger="hover" 
-                                    data-bs-placement="top"
-                                    data-bs-content="Add a booking"
-                                    hx-target="#generic_modal_body" 
-                                    hx-include="#edit_booking"
-                                    hx-get="{% url 'get-modal-content' %}" 
-                                    hx-push-url="false"
-                                    hx-swap="innerHTML" hx-indicator="#htmx-indicator" hx-trigger="click"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                                12-06-22 3:15 PM - Phone
+                                <div class="row">
+                                    <div class="col-md-auto p-0 pe-2">
+                                        <button class="btn btn-sm btn-warning"
+                                            data-bs-toggle="popover" 
+                                            data-bs-trigger="hover" 
+                                            data-bs-placement="top"
+                                            data-bs-content="Add a booking"
+                                            hx-target="#generic_modal_body" 
+                                            hx-include="#edit_booking"
+                                            hx-get="{% url 'get-modal-content' %}" 
+                                            hx-push-url="false"
+                                            hx-swap="innerHTML" hx-indicator="#htmx-indicator" hx-trigger="click"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                    </div>
+                                    <div class="col p-0">
+                                        12-06-22 3:15 PM - Phone
+                                        <br>
+                                        <span class="badge bg-warning">In 2 days (Tuesday)</span>
+                                    </div>
+                                </div>
                             </td>
                             <td>
                                 <input type="checkbox" indeterminate="True" onclick="snackbarShow('Successfully marked as arrived', 'success')"/>
@@ -265,17 +278,25 @@
                                 15-09-2022 - Whatsapp
                             </td>
                             <td class="nowrap">
-                                <button class="btn btn-sm btn-warning"
-                                    data-bs-toggle="popover" 
-                                    data-bs-trigger="hover" 
-                                    data-bs-placement="top"
-                                    data-bs-content="Add a booking"
-                                    hx-target="#generic_modal_body" 
-                                    hx-include="#edit_booking"
-                                    hx-get="{% url 'get-modal-content' %}" 
-                                    hx-push-url="false"
-                                    hx-swap="innerHTML" hx-indicator="#htmx-indicator" hx-trigger="click"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                                14-07-22 3:15 PM - In Person
+                                <div class="row">
+                                    <div class="col-md-auto p-0 pe-2">
+                                        <button class="btn btn-sm btn-warning"
+                                            data-bs-toggle="popover" 
+                                            data-bs-trigger="hover" 
+                                            data-bs-placement="top"
+                                            data-bs-content="Add a booking"
+                                            hx-target="#generic_modal_body" 
+                                            hx-include="#edit_booking"
+                                            hx-get="{% url 'get-modal-content' %}" 
+                                            hx-push-url="false"
+                                            hx-swap="innerHTML" hx-indicator="#htmx-indicator" hx-trigger="click"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                    </div>
+                                    <div class="col p-0">
+                                        14-07-22 3:15 PM - In Person
+                                        <br>
+                                        <span class="badge bg-danger">Tomorrow (Monday)</span>
+                                    </div>
+                                </div>
                             </td>
                             <td>
                                 <input type="checkbox" indeterminate="True" onclick="snackbarShow('Successfully marked as arrived', 'success')"/>
@@ -313,7 +334,7 @@
                                 Live Well Male
                             </td>
                             <td class="nowrap">
-                                <a style="text-decoration: none;" target="_blank" href="whatsapp://send?phone=09876543214&text=Hi Scout"><i class="fa fa-whatsapp" aria-hidden="true"></i> 09876543214</a>
+                                <a style="text-decoration: none;" target="_blank" href="whatsapp://send?phone=447827777940&text=Hi Scout, I'm using Eleanor's number as a demo"><i class="fa fa-whatsapp" aria-hidden="true"></i> 09876543214</a>
                             </td>
                             <td>
                                 <button class="btn btn-sm btn-primary"
@@ -410,7 +431,7 @@
                                 Live Well Female
                             </td>
                             <td class="nowrap">
-                                <a style="text-decoration: none;" target="_blank" href="whatsapp://send?phone=09876543214&text=Hi Mark"><i class="fa fa-whatsapp" aria-hidden="true"></i> 09876543214</a>
+                                <a style="text-decoration: none;" target="_blank" href="whatsapp://send?phone=447827777940&text=Hi Mark, I'm using Eleanor's number as a demo"><i class="fa fa-whatsapp" aria-hidden="true"></i> 09876543214</a>
                             </td>
                             <td>
                                 <button class="btn btn-sm btn-primary"
