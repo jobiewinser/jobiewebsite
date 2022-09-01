@@ -11,7 +11,9 @@
             <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>            
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
             <script src="https://kit.fontawesome.com/dff56c38e1.js" crossorigin="anonymous"></script>   
-            <script src="{% static 'js/htmx.min.js' %}"></script>         
+            <script src="{% static 'js/htmx.min.js' %}"></script>        
+            <link href="{% static 'css/snackbar.css' %}" rel="stylesheet" />
+            <script src="{% static 'js/snackbar.js' %}"></script> 
             {% comment %} 
             AutoFill v2.3.7
             Buttons v2.0.1
@@ -46,9 +48,13 @@
                             $('#generic_modal').modal('show');
                         }
                         else if (evt.detail.pathInfo.path.includes("switch-user")){
-                          $('#generic_modal').modal('hide');
-                          console.log(evt)
+                            $('#generic_modal').modal('hide');
+                            snackbarShow('Successfully switched user', 'success')
                         }
+                        else if (evt.detail.pathInfo.path.includes("mark-done")){
+                            snackbarShow('Successfully marked lead as done', 'success')
+                        }
+                        
                         $('[data-bs-toggle=popover]').popover();
                     });
                     document.body.addEventListener('htmx:configRequest', function(evt) {    
@@ -83,6 +89,10 @@
                 text-align: left;
                 vertical-align: middle;
               }
+              .nowrap {
+                  white-space: nowrap;
+              }
+              
         </style>
         {%endblock styles%}
         
@@ -124,5 +134,6 @@
         </div>
         
     </body>
+    <div id="snackbar"></div>
 </html>
 
