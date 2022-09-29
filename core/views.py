@@ -185,4 +185,11 @@ class Webhooks(View):
         response.status_code = 200
         return response
 
+class LeadsManagementPrivacyPolicy(TemplateView):
+    template_name='core/leads_management_privacy_policy.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(LeadsManagementPrivacyPolicy, self).get_context_data(**kwargs)
+        return context
+
 

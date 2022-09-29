@@ -107,7 +107,7 @@
                 <a class="{% block projects_nav_active %}{%endblock projects_nav_active%}" href="{% url 'projects' %}">Projects</a>
                 <a class="{% block career_nav_active %}{%endblock career_nav_active%}" href="{% url 'career' %}">Career and Education</a>
                 <a class="{% block site_nav_active %}{%endblock site_nav_active%}" href="{% url 'site' %}">This Site</a>
-                <a class="{% block results_nav_active %}{%endblock results_nav_active%}" href="{% url 'results' %}">Results Demo</a>
+                {% comment %} <a class="{% block results_nav_active %}{%endblock results_nav_active%}" href="{% url 'results' %}">Results Demo</a> {% endcomment %}
                 {% comment %} <a class="{% block enquiries_nav_active %}{%endblock enquiries_nav_active%}" href="/enquiries">Enquiries</a> {% endcomment %}
                 {% comment %} <a class="{% block iot_nav_active %}{%endblock iot_nav_active%}" href="/iot">Internet of things (WIP)</a> {% endcomment %}
             </div>

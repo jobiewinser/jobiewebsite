@@ -68,7 +68,7 @@ if os.getenv("SERVER") == "development":
     ALLOWED_HOSTS = ['*']
 else:
     DEBUG = False
-    ALLOWED_HOSTS = ["apiportfolio.jobiewinser.co.uk", "portfolio.jobiewinser.co.uk"]
+    ALLOWED_HOSTS = ["apiportfolio.jobiewinser.co.uk", "portfolio.jobiewinser.co.uk", "localhost"]
 STATICFILES_DIRS = [
     '/var/www/jobiewebsite/staticfiles/'
 ]
@@ -231,3 +231,11 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'jobiewinser@gmail.com'
 EMAIL_HOST_PASSWORD = 'zcosfvgjmblebclj'
+
+TIME_ZONE = 'Europe/London'
+
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True

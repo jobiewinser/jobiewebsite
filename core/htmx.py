@@ -1,15 +1,15 @@
+import datetime
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.shortcuts import render
 import logging
 from django.contrib.auth import login
-from django.middleware.csrf import get_token
 logger = logging.getLogger(__name__)
 def get_modal_content(request, **kwargs):
     try:
         if request.user.is_staff:
             template_name = request.GET.get('template_name', '')
-            context = {}
+            context = {'now':datetime.datetime.now()}
             if template_name == 'switch_user':
                 context['staff_users'] = User.objects.filter(is_staff=True, is_superuser=False).order_by('first_name')
             if template_name == 'log_communication':

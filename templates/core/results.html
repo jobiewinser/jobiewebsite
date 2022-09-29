@@ -7,7 +7,6 @@
             $('#results_table').DataTable({
             });
         });
-
     </script>
 {%endblock scripts%}
 
@@ -24,6 +23,7 @@
         .current-user-highlight {
             background-color: rgba(25, 135, 84, 0.3) !important;
             border: rgba(25, 135, 84, 0.8) !important;
+            border-radius: 25px;
         }
         .content {
             margin-top:10px;
@@ -74,7 +74,14 @@
                 </select>
             </div>
             <div class="col-md-auto">
-                <button class="btn btn-success" onclick="snackbarShow('Coming Soon', 'danger')"><i class="fa fa-whatsapp" aria-hidden="true"></i> Whatsapp Templates</button>
+                <button class="btn btn-success" onclick="snackbarShow('Coming Soon', 'warning')"><i class="fa fa-whatsapp" aria-hidden="true"></i> Whatsapp Templates</button>
+            </div>
+            <div class="col-md-auto">
+                <div class="btn-group">
+                    <a href="#" class="btn btn-primary active" aria-current="page">Active Leads</a>
+                    <a href="#" onclick="snackbarShow('Coming Soon', 'warning')" class="btn btn-secondary">Complete / Successful Leads</a>
+                    <a href="#" onclick="snackbarShow('Coming Soon', 'warning')" class="btn btn-secondary">Incomplete / Unsuccessful Leads</a>
+                  </div>
             </div>
             <div class="col">                
             </div>

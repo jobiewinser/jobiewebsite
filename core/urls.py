@@ -39,5 +39,6 @@ urlpatterns = [
     # path('energy-chart/', coreviews.energy_chart, name='energy-chart'),
 
     # path('test/', coreviews.test, name='test'),
+    path('leads-management-privacy-policy/', coreviews.LeadsManagementPrivacyPolicy.as_view(), name='leads-management-privacy-policy'),
 
 ]
